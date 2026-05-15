@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Subham Kumar Sinha"
+      }
+      description: "This API calculates the Body Mass Index (BMI) based on a user's weight and height. It provides details such as the BMI value and the corresponding health category based on the calculated BMI."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://bmicalculatorapi.vercel.app"
+        }
+      ]
+      title: "BMI Calculator API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

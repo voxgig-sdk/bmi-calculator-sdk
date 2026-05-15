@@ -1,0 +1,33 @@
+# BasicBmiFlow
+
+main: kit: flow: BasicBmiFlow:
+{
+  entity: "bmi",
+  kind: "basic",
+  name: "BasicBmiFlow",
+  step: [
+    {
+      input: {
+        ref: "bmi_ref01",
+        srcdatavar: "bmi_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "bmi01",
+        weight: "weight01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bmi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBmiFlow"
+}

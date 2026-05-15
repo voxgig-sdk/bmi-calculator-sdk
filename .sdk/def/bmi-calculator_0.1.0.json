@@ -1,0 +1,166 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "BMI Calculator API",
+    "description": "This API calculates the Body Mass Index (BMI) based on a user's weight and height. It provides details such as the BMI value and the corresponding health category based on the calculated BMI.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Subham Kumar Sinha"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://bmicalculatorapi.vercel.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/bmi/{weight}/{height}": {
+      "get": {
+        "summary": "Calculate BMI",
+        "description": "Calculates the Body Mass Index (BMI) based on the provided weight and height values. Returns the BMI value and corresponding health category.",
+        "operationId": "calculateBMI",
+        "parameters": [
+          {
+            "name": "weight",
+            "in": "path",
+            "description": "Body weight in kilograms",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": 87.9
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "description": "Height in meters",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": 1.75,
+              "exclusiveMinimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful BMI calculation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Category": {
+                      "type": "string",
+                      "description": "Health category based on BMI",
+                      "enum": [
+                        "Underweight",
+                        "Normal weight",
+                        "Overweight",
+                        "Obese"
+                      ],
+                      "example": "Overweight"
+                    },
+                    "bmi": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Calculated BMI (trimmed to 3 decimal points)",
+                      "example": 28.702
+                    },
+                    "height": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Provided height in meters",
+                      "example": 1.75
+                    },
+                    "weight": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Provided weight in kilograms",
+                      "example": 87.9
+                    }
+                  },
+                  "required": [
+                    "Category",
+                    "bmi",
+                    "height",
+                    "weight"
+                  ]
+                },
+                "example": {
+                  "Category": "Overweight",
+                  "bmi": 28.702,
+                  "height": 1.75,
+                  "weight": 87.9
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters or height is zero",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "Error": {
+                          "type": "string",
+                          "example": "Height parameter cannot be Zero"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string",
+                          "example": "Invalid parameters. Please provide numeric values for weight and height."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "heightIsZero": {
+                    "summary": "Height is zero",
+                    "value": {
+                      "Error": "Height parameter cannot be Zero"
+                    }
+                  },
+                  "invalidParameters": {
+                    "summary": "Invalid parameters",
+                    "value": {
+                      "error": "Invalid parameters. Please provide numeric values for weight and height."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "BMI Calculation"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "BMI Calculation",
+      "description": "Operations related to BMI calculation",
+      "externalDocs": {
+        "description": "BMI Categories Reference",
+        "url": "https://bmicalculatorapi.vercel.app/api/"
+      }
+    }
+  ],
+  "externalDocs": {
+    "description": "Full API Documentation",
+    "url": "https://bmicalculatorapi.vercel.app/api/"
+  }
+}

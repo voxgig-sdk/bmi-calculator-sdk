@@ -1,0 +1,15 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 1
+  metrics: count: method: 1
+
+  entity: bmi: {
+    path: "/api/bmi/{weight}/{height}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.bmi`")|top
+    }
+  }
+
+}
