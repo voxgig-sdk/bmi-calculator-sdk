@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/bmi-calculator-sdk/core"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/core"
 )
 
 type BaseFeature struct {

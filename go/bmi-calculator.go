@@ -1,10 +1,10 @@
 package voxgigbmicalculatorsdk
 
 import (
-	"github.com/voxgig-sdk/bmi-calculator-sdk/core"
-	"github.com/voxgig-sdk/bmi-calculator-sdk/entity"
-	"github.com/voxgig-sdk/bmi-calculator-sdk/feature"
-	_ "github.com/voxgig-sdk/bmi-calculator-sdk/utility"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/core"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/entity"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/feature"
+	_ "github.com/voxgig-sdk/bmi-calculator-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

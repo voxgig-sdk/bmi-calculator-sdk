@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/bmi-calculator-sdk"
-	"github.com/voxgig-sdk/bmi-calculator-sdk/core"
+	sdk "github.com/voxgig-sdk/bmi-calculator-sdk/go"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/bmi-calculator-sdk/go/utility/struct"
 )
 
 func TestBmiEntity(t *testing.T) {

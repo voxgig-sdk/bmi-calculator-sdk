@@ -5,19 +5,22 @@
         "bmi": 40,
         "category": "s29",
         "height": 42,
-        "weight": 43
+        "weight": 43,
+        "id": "BMI00"
       },
       "BMI01": {
         "bmi": 80,
         "category": "s51",
         "height": 82,
-        "weight": 83
+        "weight": 83,
+        "id": "BMI01"
       },
       "BMI02": {
         "bmi": 120,
         "category": "s79",
         "height": 122,
-        "weight": 123
+        "weight": 123,
+        "id": "BMI02"
       }
     }
   },

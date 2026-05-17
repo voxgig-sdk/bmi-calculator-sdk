@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/bmi-calculator-sdk"
-	"github.com/voxgig-sdk/bmi-calculator-sdk/core"
+	sdk "github.com/voxgig-sdk/bmi-calculator-sdk/go"
+	"github.com/voxgig-sdk/bmi-calculator-sdk/go/core"
 )
 
 func TestBmiDirect(t *testing.T) {

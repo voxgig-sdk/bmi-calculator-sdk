@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/bmi-calculator-sdk"
+	sdk "github.com/voxgig-sdk/bmi-calculator-sdk/go"
 )
 
 func TestExists(t *testing.T) {
