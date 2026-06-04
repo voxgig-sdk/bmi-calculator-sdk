@@ -82,7 +82,6 @@ def bmi_basic_setup(extra)
     "BMICALCULATOR_TEST_BMI_ENTID" => idmap,
     "BMICALCULATOR_TEST_LIVE" => "FALSE",
     "BMICALCULATOR_TEST_EXPLAIN" => "FALSE",
-    "BMICALCULATOR_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def bmi_basic_setup(extra)
   if env["BMICALCULATOR_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["BMICALCULATOR_APIKEY"],
       },
       extra || {},
     ])

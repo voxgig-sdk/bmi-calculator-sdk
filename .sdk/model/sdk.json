@@ -16,7 +16,15 @@
           }
         ],
         "title": "BMI Calculator API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Compute Body Mass Index from weight and height and get the matching health category",
+        "homepage": "https://bmicalculatorapi.vercel.app",
+        "docs_url": "https://freepublicapis.com/bmi-calculator-api",
+        "about_md": "The BMI Calculator API is a small public endpoint hosted on [Vercel](https://bmicalculatorapi.vercel.app) that turns a weight and height pair into a Body Mass Index value and a corresponding health classification. It is catalogued on [Free Public APIs](https://freepublicapis.com/bmi-calculator-api).\n\nWhat you get from the API:\n\n- A single `GET` operation at `/api/bmi/{weight}/{height}` that accepts weight in kilograms and height in metres.\n- A JSON response containing the input `Weight` and `Height`, the calculated `BMI` value, and a `Category` string such as `Healthy` or `Overweight`.\n\nThe service is publicly accessible with no authentication. CORS is not enabled, so requests typically need to be made from a server-side environment rather than directly from a browser.",
+        "entity_desc": {
+          "bmi": "Body Mass Index calculations derived from a weight and height pair, served from `GET /api/bmi/{weight}/{height}` and returning the BMI value with its health category."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +32,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "bmi": {
