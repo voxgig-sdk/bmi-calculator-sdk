@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'BMI_CALCULATOR_TEST_BMI_ENTID': idmap,
     'BMI_CALCULATOR_TEST_LIVE': 'FALSE',
     'BMI_CALCULATOR_TEST_EXPLAIN': 'FALSE',
+    'BMI_CALCULATOR_APIKEY': 'NONE',
   })
 
   idmap = env['BMI_CALCULATOR_TEST_BMI_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new BmiCalculatorSDK(merge([
       {
+        apikey: env.BMI_CALCULATOR_APIKEY,
       },
       extra
     ]))

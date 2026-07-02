@@ -1,19 +1,8 @@
 # BmiCalculator SDK
 
-Compute Body Mass Index from weight and height and get the matching health category
+BMI Calculator API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About BMI Calculator API
-
-The BMI Calculator API is a small public endpoint hosted on [Vercel](https://bmicalculatorapi.vercel.app) that turns a weight and height pair into a Body Mass Index value and a corresponding health classification. It is catalogued on [Free Public APIs](https://freepublicapis.com/bmi-calculator-api).
-
-What you get from the API:
-
-- A single `GET` operation at `/api/bmi/{weight}/{height}` that accepts weight in kilograms and height in metres.
-- A JSON response containing the input `Weight` and `Height`, the calculated `BMI` value, and a `Category` string such as `Healthy` or `Overweight`.
-
-The service is publicly accessible with no authentication. CORS is not enabled, so requests typically need to be made from a server-side environment rather than directly from a browser.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install bmi-calculator-sdk
 luarocks install bmi-calculator-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { BmiCalculatorSDK } from 'bmi-calculator'
 
-const client = new BmiCalculatorSDK({})
+const client = new BmiCalculatorSDK({
+  apikey: process.env.BMI-CALCULATOR_APIKEY,
+})
 
+// Load bmi data
+const bmi = await client.Bmi().load({})
+console.log(bmi.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Bmi** | Body Mass Index calculations derived from a weight and height pair, served from `GET /api/bmi/{weight}/{height}` and returning the BMI value with its health category. | `/api/bmi/{weight}/{height}` |
+| **Bmi** |  | `/api/bmi/{weight}/{height}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from bmicalculator_sdk import BmiCalculatorSDK
 
-client = BmiCalculatorSDK({})
+client = BmiCalculatorSDK({
+    "apikey": os.environ.get("BMI-CALCULATOR_APIKEY"),
+})
 
 
 # Load a specific bmi
-bmi, err = client.Bmi(None).load(
-    {"id": "example_id"}, None
-)
+bmi, err = client.Bmi().load({"id": "example_id"})
+print(bmi)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ bmi, err = client.Bmi(None).load(
 <?php
 require_once 'bmicalculator_sdk.php';
 
-$client = new BmiCalculatorSDK([]);
+$client = new BmiCalculatorSDK([
+    "apikey" => getenv("BMI-CALCULATOR_APIKEY"),
+]);
 
 
 // Load a specific bmi
-[$bmi, $err] = $client->Bmi(null)->load(
-    ["id" => "example_id"], null
-);
+[$bmi, $err] = $client->Bmi()->load(["id" => "example_id"]);
+print_r($bmi);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new BmiCalculatorSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/bmi-calculator-sdk/go"
 
-client := sdk.NewBmiCalculatorSDK(map[string]any{})
+client := sdk.NewBmiCalculatorSDK(map[string]any{
+    "apikey": os.Getenv("BMI-CALCULATOR_APIKEY"),
+})
 
+// Load bmi data
+bmi, err := client.Bmi(nil).Load(map[string]any{}, nil)
+fmt.Println(bmi)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewBmiCalculatorSDK(map[string]any{})
 ```ruby
 require_relative "BmiCalculator_sdk"
 
-client = BmiCalculatorSDK.new({})
+client = BmiCalculatorSDK.new({
+  "apikey" => ENV["BMI-CALCULATOR_APIKEY"],
+})
 
 
 # Load a specific bmi
-bmi, err = client.Bmi(nil).load(
-  { "id" => "example_id" }, nil
-)
+bmi, err = client.Bmi().load({ "id" => "example_id" })
+puts bmi
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ bmi, err = client.Bmi(nil).load(
 ```lua
 local sdk = require("bmi-calculator_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("BMI-CALCULATOR_APIKEY"),
+})
 
 
 -- Load a specific bmi
-local bmi, err = client:Bmi(nil):load(
-  { id = "example_id" }, nil
-)
+local bmi, err = client:Bmi():load({ id = "example_id" })
+print(bmi)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Bmi().load({ id: 'test01' })
 ### Python
 
 ```python
-client = BmiCalculatorSDK.test(None, None)
-result, err = client.Bmi(None).load(
-    {"id": "test01"}, None
-)
+client = BmiCalculatorSDK.test()
+result, err = client.Bmi().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = BmiCalculatorSDK::test(null, null);
-[$result, $err] = $client->Bmi(null)->load(
-    ["id" => "test01"], null
-);
+$client = BmiCalculatorSDK::test();
+[$result, $err] = $client->Bmi()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Bmi(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Bmi(nil).Load(
 ### Ruby
 
 ```ruby
-client = BmiCalculatorSDK.test(nil, nil)
-result, err = client.Bmi(nil).load(
-  { "id" => "test01" }, nil
-)
+client = BmiCalculatorSDK.test
+result, err = client.Bmi().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Bmi(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Bmi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,11 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the BMI Calculator API
-
-- Upstream: [https://bmicalculatorapi.vercel.app](https://bmicalculatorapi.vercel.app)
-- API docs: [https://freepublicapis.com/bmi-calculator-api](https://freepublicapis.com/bmi-calculator-api)
 
 ---
 

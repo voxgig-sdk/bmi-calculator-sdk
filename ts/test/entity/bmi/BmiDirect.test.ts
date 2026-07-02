@@ -82,12 +82,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'BMICALCULATOR_TEST_BMI_ENTID': {},
     'BMICALCULATOR_TEST_LIVE': 'FALSE',
+    'BMICALCULATOR_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.BMICALCULATOR_TEST_LIVE
 
   if (live) {
     const client = new BmiCalculatorSDK({
+      apikey: env.BMICALCULATOR_APIKEY,
     })
 
     let idmap: any = env['BMICALCULATOR_TEST_BMI_ENTID']

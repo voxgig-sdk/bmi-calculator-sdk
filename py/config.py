@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://bmicalculatorapi.vercel.app",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,59 +29,61 @@ def make_config():
       "bmi": {
         "fields": [
           {
+            "active": True,
             "name": "bmi",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "category",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "height",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "weight",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "bmi",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": 1.75,
                       "kind": "param",
                       "name": "height",
                       "orig": "height",
                       "reqd": True,
                       "type": "`$NUMBER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 87.9,
                       "kind": "param",
                       "name": "weight",
                       "orig": "weight",
                       "reqd": True,
                       "type": "`$NUMBER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -98,13 +103,11 @@ def make_config():
                 },
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.bmi`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

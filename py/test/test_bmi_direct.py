@@ -68,12 +68,14 @@ def _bmi_direct_setup(mockres):
     env = runner.env_override({
         "BMICALCULATOR_TEST_BMI_ENTID": {},
         "BMICALCULATOR_TEST_LIVE": "FALSE",
+        "BMICALCULATOR_APIKEY": "NONE",
     })
 
     live = env.get("BMICALCULATOR_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("BMICALCULATOR_APIKEY"),
         }
         client = BmiCalculatorSDK(merged_opts)
         return {

@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://bmicalculatorapi.vercel.app",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -25,59 +28,61 @@ func MakeConfig() map[string]any {
 			"bmi": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "bmi",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "category",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "height",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 2,
 					},
 					map[string]any{
+						"active": true,
 						"name": "weight",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 3,
 					},
 				},
 				"name": "bmi",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"active": true,
 											"example": 1.75,
 											"kind": "param",
 											"name": "height",
 											"orig": "height",
 											"reqd": true,
 											"type": "`$NUMBER`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": 87.9,
 											"kind": "param",
 											"name": "weight",
 											"orig": "weight",
 											"reqd": true,
 											"type": "`$NUMBER`",
-											"active": true,
 										},
 									},
 								},
@@ -97,13 +102,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.bmi`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},

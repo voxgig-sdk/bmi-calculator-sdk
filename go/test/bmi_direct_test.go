@@ -115,12 +115,14 @@ func bmiDirectSetup(mockres any) *bmiDirectSetupResult {
 	env := envOverride(map[string]any{
 		"BMICALCULATOR_TEST_BMI_ENTID": map[string]any{},
 		"BMICALCULATOR_TEST_LIVE":    "FALSE",
+		"BMICALCULATOR_APIKEY":       "NONE",
 	})
 
 	live := env["BMICALCULATOR_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["BMICALCULATOR_APIKEY"],
 		}
 		client := sdk.NewBmiCalculatorSDK(mergedOpts)
 
