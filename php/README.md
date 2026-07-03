@@ -10,7 +10,7 @@ The PHP SDK for the BmiCalculator API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/bmi-calculator-sdk
+composer require voxgig-sdk/bmi-calculator
 ```
 
 

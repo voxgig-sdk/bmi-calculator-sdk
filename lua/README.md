@@ -10,7 +10,7 @@ The Lua SDK for the BmiCalculator API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install bmi-calculator-sdk
+luarocks install voxgig-sdk-bmi-calculator
 ```
 
 If the module is not yet published, add the source directory to

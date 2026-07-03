@@ -10,13 +10,13 @@ The Ruby SDK for the BmiCalculator API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install bmi-calculator-sdk
+gem install voxgig-sdk-bmi-calculator
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "bmi-calculator-sdk"
+gem "voxgig-sdk-bmi-calculator"
 ```
 
 Then run:

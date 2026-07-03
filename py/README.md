@@ -10,7 +10,7 @@ The Python SDK for the BmiCalculator API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install bmi-calculator-sdk
+pip install voxgig-sdk-bmi-calculator
 ```
 
 Or install from source:

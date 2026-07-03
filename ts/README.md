@@ -10,7 +10,7 @@ The TypeScript SDK for the BmiCalculator API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install bmi-calculator
+npm install @voxgig-sdk/bmi-calculator
 ```
 ## Tutorial: your first API call
 
