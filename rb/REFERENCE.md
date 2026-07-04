@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## BmiEntity
 
 ```ruby
-bmi = client.bmi
+bmi = client.Bmi
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ bmi = client.bmi
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.bmi.load({ "id" => "bmi_id" })
+result = client.Bmi.load({ "id" => "bmi_id" })
 ```
 
 ### Common Methods

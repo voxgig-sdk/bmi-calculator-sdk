@@ -208,13 +208,7 @@ class BmiCalculatorSDK
   end
 
 
-  # Idiomatic facade: client.bmi.list / client.bmi.load({ "id" => ... })
-  def bmi
-    require_relative 'entity/bmi_entity'
-    @bmi ||= BmiEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.bmi instead.
+  # Canonical facade: client.Bmi.list / client.Bmi.load({ "id" => ... })
   def Bmi(data = nil)
     require_relative 'entity/bmi_entity'
     BmiEntity.new(self, data)

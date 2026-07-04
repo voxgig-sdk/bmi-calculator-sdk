@@ -107,7 +107,7 @@ class BmiCalculatorConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.bmi`',
+                    'res' => '`body`',
                   ],
                   'index$' => 0,
                 ],

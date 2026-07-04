@@ -99,7 +99,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body.bmi`"
+                    "res": "`body`"
                   }
                 }
               ]

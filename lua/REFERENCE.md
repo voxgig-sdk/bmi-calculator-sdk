@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## BmiEntity
 
 ```lua
-local bmi = client:bmi(nil)
+local bmi = client:Bmi(nil)
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ local bmi = client:bmi(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:bmi():load({ id = "bmi_id" })
+local result, err = client:Bmi():load({ id = "bmi_id" })
 ```
 
 ### Common Methods

@@ -8,7 +8,6 @@ guide: {
   entity: bmi: {
     path: "/api/bmi/{weight}/{height}": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.bmi`")|top
     }
   }
 

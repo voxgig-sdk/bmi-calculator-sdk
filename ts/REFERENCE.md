@@ -109,7 +109,7 @@ Alias for `BmiCalculatorSDK.test()`.
 ## BmiEntity
 
 ```ts
-const bmi = client.bmi
+const bmi = client.Bmi()
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const bmi = client.bmi
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.bmi.load({ id: 'bmi_id' })
+const result = await client.Bmi().load({ id: 'bmi_id' })
 ```
 
 ### Common Methods

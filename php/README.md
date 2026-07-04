@@ -33,9 +33,10 @@ $client = new BmiCalculatorSDK();
 
 ```php
 try {
-    $result = $client->bmi()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Bmi record (throws on error).
+    $bmi = $client->Bmi()->load(["id" => "example_id"]);
+    print_r($bmi);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = BmiCalculatorSDK::test();
+$client = BmiCalculatorSDK::test([
+    "entity" => ["bmi" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->bmi()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$bmi = $client->Bmi()->load(["id" => "test01"]);
+print_r($bmi);
 ```
 
 ### Use a custom fetch function
@@ -226,7 +231,7 @@ API path: `/api/bmi/{weight}/{height}`
 
 ### Bmi
 
-Create an instance: `const bmi = client.bmi`
+Create an instance: `$bmi = $client->Bmi();`
 
 #### Operations
 
@@ -245,8 +250,9 @@ Create an instance: `const bmi = client.bmi`
 
 #### Example: Load
 
-```ts
-const bmi = await client.bmi.load({ id: 'bmi_id' })
+```php
+// load() returns the bare Bmi record (throws on error).
+$bmi = $client->Bmi()->load(["id" => "bmi_id"]);
 ```
 
 
@@ -321,7 +327,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$bmi = $client->bmi();
+$bmi = $client->Bmi();
 $bmi->load(["id" => "example_id"]);
 
 // $bmi->dataGet() now returns the loaded bmi data

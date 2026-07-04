@@ -33,10 +33,12 @@ client = BmiCalculatorSDK()
 
 ### 3. Load a bmi
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.bmi.load({"id": "example_id"})
-    print(result)
+    bmi = client.Bmi().load({"id": "example_id"})
+    print(bmi)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = BmiCalculatorSDK.test()
 
-result = client.bmi.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+bmi = client.Bmi().load({"id": "test01"})
+# bmi contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +224,7 @@ API path: `/api/bmi/{weight}/{height}`
 
 ### Bmi
 
-Create an instance: `const bmi = client.bmi`
+Create an instance: `bmi = client.Bmi()`
 
 #### Operations
 
@@ -240,8 +243,8 @@ Create an instance: `const bmi = client.bmi`
 
 #### Example: Load
 
-```ts
-const bmi = await client.bmi.load({ id: 'bmi_id' })
+```python
+bmi = client.Bmi().load({"id": "bmi_id"})
 ```
 
 
@@ -315,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-bmi = client.bmi
+bmi = client.Bmi()
 bmi.load({"id": "example_id"})
 
 # bmi.data_get() now returns the loaded bmi data

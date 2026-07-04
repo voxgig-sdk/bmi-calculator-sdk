@@ -233,10 +233,10 @@ class BmiCalculatorSDK
 
     private $_bmi = null;
 
-    // Idiomatic facade: $client->bmi()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Bmi() (PHP method
-    // names are case-insensitive).
-    public function bmi($data = null)
+    // Canonical facade: $client->Bmi()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->bmi()
+    // resolves here too.
+    public function Bmi($data = null)
     {
         require_once __DIR__ . '/entity/bmi_entity.php';
         if ($data === null) {

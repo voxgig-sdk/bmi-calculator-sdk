@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:bmi():list() / client:bmi():load({ id = ... })
-function BmiCalculatorSDK:bmi(data)
+-- Idiomatic facade: client:Bmi():list() / client:Bmi():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function BmiCalculatorSDK:Bmi(data)
   local EntityMod = require("entity.bmi_entity")
   if data == nil then
     if self._bmi == nil then
@@ -253,12 +254,6 @@ function BmiCalculatorSDK:bmi(data)
     end
     return self._bmi
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:bmi() instead.
-function BmiCalculatorSDK:Bmi(data)
-  local EntityMod = require("entity.bmi_entity")
   return EntityMod.new(self, data)
 end
 

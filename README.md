@@ -26,9 +26,9 @@ import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
 
 const client = new BmiCalculatorSDK()
 
-// Load bmi data
-const bmi = await client.bmi.load({})
-console.log(bmi.data)
+// Load bmi data (returns a Bmi)
+const bmi = await client.Bmi().load()
+console.log(bmi)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from bmicalculator_sdk import BmiCalculatorSDK
 client = BmiCalculatorSDK()
 
 
-# Load a specific bmi
-bmi = client.bmi.load({"id": "example_id"})
+# Load a specific bmi (returns the record, raises on error)
+bmi = client.Bmi().load({"id": "example_id"})
 print(bmi)
 ```
 
@@ -98,8 +98,8 @@ require_once 'bmicalculator_sdk.php';
 $client = new BmiCalculatorSDK();
 
 
-// Load a specific bmi
-$bmi = $client->bmi()->load(["id" => "example_id"]);
+// Load a specific bmi (returns the bare record; throws on error)
+$bmi = $client->Bmi()->load(["id" => "example_id"]);
 print_r($bmi);
 ```
 
@@ -123,8 +123,8 @@ require_relative "BmiCalculator_sdk"
 client = BmiCalculatorSDK.new
 
 
-# Load a specific bmi
-bmi = client.bmi.load({ "id" => "example_id" })
+# Load a specific bmi (returns the bare record; raises on error)
+bmi = client.Bmi.load({ "id" => "example_id" })
 puts bmi
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific bmi
-local bmi, err = client:bmi():load({ id = "example_id" })
+local bmi, err = client:Bmi():load({ id = "example_id" })
 print(bmi)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = BmiCalculatorSDK.test()
-const result = await client.bmi.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const bmi = await client.Bmi().load({ id: 'test01' })
+// bmi is a bare Bmi populated with mock data
+console.log(bmi)
 ```
 
 ### Python
 
 ```python
 client = BmiCalculatorSDK.test()
-result = client.bmi.load({"id": "test01"})
+bmi = client.Bmi().load({"id": "test01"})
+print(bmi)
 ```
 
 ### PHP
 
 ```php
-$client = BmiCalculatorSDK::test();
-$result = $client->bmi()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = BmiCalculatorSDK::test([
+    "entity" => ["bmi" => ["test01" => ["id" => "test01"]]],
+]);
+$bmi = $client->Bmi()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Bmi(nil).Load(
 ### Ruby
 
 ```ruby
-client = BmiCalculatorSDK.test
-result = client.bmi.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = BmiCalculatorSDK.test({
+  "entity" => { "bmi" => { "test01" => { "id" => "test01" } } },
+})
+bmi = client.Bmi.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:bmi():load({ id = "test01" })
+local result, err = client:Bmi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

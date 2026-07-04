@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## BmiEntity
 
 ```php
-$bmi = $client->bmi();
+$bmi = $client->Bmi();
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ $bmi = $client->bmi();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->bmi()->load(["id" => "bmi_id"]);
+$result = $client->Bmi()->load(["id" => "bmi_id"]);
 ```
 
 ### Common Methods

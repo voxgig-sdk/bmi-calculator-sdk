@@ -220,25 +220,15 @@ class BmiCalculatorSDK:
         }
 
 
-    @property
-    def bmi(self):
-        """Idiomatic facade: client.bmi.list() / client.bmi.load({"id": ...})."""
-        from entity.bmi_entity import BmiEntity
-        cached = getattr(self, "_bmi", None)
-        if cached is None:
-            cached = BmiEntity(self, None)
-            self._bmi = cached
-        return cached
-
-    def Bmi(self, data=None):
-        # Deprecated: use client.bmi instead.
+    def Bmi(self, data=None) -> "BmiEntity":
+        """Entity factory: client.Bmi().list({}) / client.Bmi().load({"id": ...})."""
         from entity.bmi_entity import BmiEntity
         return BmiEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "BmiCalculatorSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class BmiCalculatorSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.bmi_entity import BmiEntity
