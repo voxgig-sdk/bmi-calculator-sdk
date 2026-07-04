@@ -49,8 +49,7 @@ class TestBmiEntity:
         # LOAD
         bmi_ref01_ent = client.Bmi(None)
         bmi_ref01_match_dt0 = {}
-        bmi_ref01_data_dt0_loaded, err = bmi_ref01_ent.load(bmi_ref01_match_dt0, None)
-        assert err is None
+        bmi_ref01_data_dt0_loaded = bmi_ref01_ent.load(bmi_ref01_match_dt0, None)
         assert bmi_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _bmi_basic_setup(extra):
         "BMICALCULATOR_TEST_BMI_ENTID": idmap,
         "BMICALCULATOR_TEST_LIVE": "FALSE",
         "BMICALCULATOR_TEST_EXPLAIN": "FALSE",
-        "BMICALCULATOR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _bmi_basic_setup(extra):
     if env.get("BMICALCULATOR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("BMICALCULATOR_APIKEY"),
             },
             extra or {},
         ])

@@ -45,6 +45,7 @@ class BmiEntity
     end
   end
 
+  # @return [Bmi, Hash] the current Bmi data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BmiEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Bmi fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Bmi.
+  #
+  # @param reqmatch [BmiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Bmi, Hash] the loaded Bmi; raises BmiCalculatorError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

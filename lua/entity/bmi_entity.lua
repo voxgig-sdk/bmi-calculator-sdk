@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BmiLoadMatch
+---@param ctrl? table
+---@return Bmi
+---@return string? err
 function BmiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

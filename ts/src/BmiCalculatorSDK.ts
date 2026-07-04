@@ -2,6 +2,8 @@
 
 import { BmiEntity } from './entity/BmiEntity'
 
+export type * from './BmiCalculatorTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class BmiCalculatorSDK {
 
 
 
+  _bmi?: BmiEntity
+
+  // Idiomatic facade: `client.bmi.list()` / `client.bmi.load({ id })`.
+  get bmi(): BmiEntity {
+    return (this._bmi ??= new BmiEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.bmi` instead. */
   Bmi(data?: any) {
     const self = this
     return new BmiEntity(self,data)

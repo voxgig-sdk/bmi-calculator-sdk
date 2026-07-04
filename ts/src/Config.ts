@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://bmicalculatorapi.vercel.app',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -104,7 +100,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$NUMBER`"
+                    "type": "`$NUMBER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -113,7 +110,8 @@ class Config {
                     "name": "weight",
                     "orig": "weight",
                     "reqd": true,
-                    "type": "`$NUMBER`"
+                    "type": "`$NUMBER`",
+                    "index$": 1
                   }
                 ]
               },

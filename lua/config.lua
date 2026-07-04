@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://bmicalculatorapi.vercel.app",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -74,6 +71,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$NUMBER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -83,6 +81,7 @@ local function make_config()
                       ["orig"] = "weight",
                       ["reqd"] = true,
                       ["type"] = "`$NUMBER`",
+                      ["index$"] = 1,
                     },
                   },
                 },

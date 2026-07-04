@@ -9,9 +9,12 @@ The TypeScript SDK for the BmiCalculator API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/bmi-calculator
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/bmi-calculator-sdk/releases](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { BmiCalculatorSDK } from 'bmi-calculator'
+import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
 
-const client = new BmiCalculatorSDK({
-  apikey: process.env.BMI-CALCULATOR_APIKEY,
-})
+const client = new BmiCalculatorSDK()
 ```
 
 ### 3. Load a bmi
 
 ```ts
-const result = await client.Bmi().load({ id: 'example_id' })
+const result = await client.bmi.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = BmiCalculatorSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.bmi.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new BmiCalculatorSDK({ apikey: '...' })
+const client = new BmiCalculatorSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.bmi
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new BmiCalculatorSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new BmiCalculatorSDK({
 Create a `.env.local` file at the project root:
 
 ```
-BMI-CALCULATOR_TEST_LIVE=TRUE
-BMI-CALCULATOR_APIKEY=<your-key>
+BMI_CALCULATOR_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new BmiCalculatorSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new BmiCalculatorSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -269,7 +266,7 @@ API path: `/api/bmi/{weight}/{height}`
 
 ### Bmi
 
-Create an instance: `const bmi = client.Bmi()`
+Create an instance: `const bmi = client.bmi`
 
 #### Operations
 
@@ -289,7 +286,7 @@ Create an instance: `const bmi = client.Bmi()`
 #### Example: Load
 
 ```ts
-const bmi = await client.Bmi().load({ id: 'bmi_id' })
+const bmi = await client.bmi.load({ id: 'bmi_id' })
 ```
 
 
@@ -350,7 +347,7 @@ bmi-calculator/
 Import the SDK from the package root:
 
 ```ts
-import { BmiCalculatorSDK } from 'bmi-calculator'
+import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
 ```
 
 ### Entity state
@@ -360,11 +357,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const bmi = client.bmi
+await bmi.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// bmi.data() now returns the loaded bmi data
+// bmi.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

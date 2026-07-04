@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://bmicalculatorapi.vercel.app",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -75,6 +72,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$NUMBER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -84,6 +82,7 @@ def make_config():
                       "orig": "weight",
                       "reqd": True,
                       "type": "`$NUMBER`",
+                      "index$": 1,
                     },
                   ],
                 },

@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://bmicalculatorapi.vercel.app",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -74,6 +71,7 @@ func MakeConfig() map[string]any {
 											"orig": "height",
 											"reqd": true,
 											"type": "`$NUMBER`",
+											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -83,6 +81,7 @@ func MakeConfig() map[string]any {
 											"orig": "weight",
 											"reqd": true,
 											"type": "`$NUMBER`",
+											"index$": 1,
 										},
 									},
 								},

@@ -117,7 +117,6 @@ func bmiBasicSetup(extra map[string]any) *entityTestSetup {
 		"BMICALCULATOR_TEST_BMI_ENTID": idmap,
 		"BMICALCULATOR_TEST_LIVE":      "FALSE",
 		"BMICALCULATOR_TEST_EXPLAIN":   "FALSE",
-		"BMICALCULATOR_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["BMICALCULATOR_TEST_BMI_ENTID"])
@@ -128,7 +127,6 @@ func bmiBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["BMICALCULATOR_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["BMICALCULATOR_APIKEY"],
 			},
 			extra,
 		})

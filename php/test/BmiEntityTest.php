@@ -49,8 +49,7 @@ class BmiEntityTest extends TestCase
         // LOAD
         $bmi_ref01_ent = $client->Bmi(null);
         $bmi_ref01_match_dt0 = [];
-        [$bmi_ref01_data_dt0_loaded, $err] = $bmi_ref01_ent->load($bmi_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $bmi_ref01_data_dt0_loaded = $bmi_ref01_ent->load($bmi_ref01_match_dt0, null);
         $this->assertNotNull($bmi_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function bmi_basic_setup($extra)
         "BMICALCULATOR_TEST_BMI_ENTID" => $idmap,
         "BMICALCULATOR_TEST_LIVE" => "FALSE",
         "BMICALCULATOR_TEST_EXPLAIN" => "FALSE",
-        "BMICALCULATOR_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function bmi_basic_setup($extra)
     if ($env["BMICALCULATOR_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["BMICALCULATOR_APIKEY"],
             ],
             $extra ?? [],
         ]);

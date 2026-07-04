@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:bmi():list() / client:bmi():load({ id = ... })
+function BmiCalculatorSDK:bmi(data)
+  local EntityMod = require("entity.bmi_entity")
+  if data == nil then
+    if self._bmi == nil then
+      self._bmi = EntityMod.new(self, nil)
+    end
+    return self._bmi
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:bmi() instead.
 function BmiCalculatorSDK:Bmi(data)
   local EntityMod = require("entity.bmi_entity")
   return EntityMod.new(self, data)

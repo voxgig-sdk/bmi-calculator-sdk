@@ -245,6 +245,9 @@ func (sdk *BmiCalculatorSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// Bmi returns a Bmi entity bound to this client.
+// Idiomatic usage: client.Bmi(nil).List(nil, nil) or
+// client.Bmi(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *BmiCalculatorSDK) Bmi(data map[string]any) BmiCalculatorEntity {
 	return NewBmiEntityFunc(sdk, data)
 }

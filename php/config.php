@@ -20,9 +20,6 @@ class BmiCalculatorConfig
             ],
             "options" => [
                 "base" => "https://bmicalculatorapi.vercel.app",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -80,6 +77,7 @@ class BmiCalculatorConfig
                         'orig' => 'height',
                         'reqd' => true,
                         'type' => '`$NUMBER`',
+                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -89,6 +87,7 @@ class BmiCalculatorConfig
                         'orig' => 'weight',
                         'reqd' => true,
                         'type' => '`$NUMBER`',
+                        'index$' => 1,
                       ],
                     ],
                   ],
