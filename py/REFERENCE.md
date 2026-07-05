@@ -8,7 +8,7 @@ Complete API reference for the BmiCalculator Python SDK.
 ### Constructor
 
 ```python
-from bmi-calculator_sdk import BmiCalculatorSDK
+from bmicalculator_sdk import BmiCalculatorSDK
 
 client = BmiCalculatorSDK(options)
 ```
@@ -87,10 +87,10 @@ bmi = client.Bmi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `float` | Yes |  |
+| `category` | `str` | Yes |  |
+| `height` | `float` | Yes |  |
+| `weight` | `float` | Yes |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ bmi = client.Bmi()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Bmi().load({"id": "bmi_id"})
+result = client.Bmi().load()
 ```
 
 ### Common Methods

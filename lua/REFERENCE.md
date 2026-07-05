@@ -90,10 +90,10 @@ local bmi = client:Bmi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `number` | Yes |  |
+| `category` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `weight` | `number` | Yes |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ local bmi = client:Bmi(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Bmi():load({ id = "bmi_id" })
+local result, err = client:Bmi():load()
 ```
 
 ### Common Methods

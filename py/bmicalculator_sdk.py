@@ -221,7 +221,7 @@ class BmiCalculatorSDK:
 
 
     def Bmi(self, data=None) -> "BmiEntity":
-        """Entity factory: client.Bmi().list({}) / client.Bmi().load({"id": ...})."""
+        """Entity factory: client.Bmi().list() / client.Bmi().load({"id": ...})."""
         from entity.bmi_entity import BmiEntity
         return BmiEntity(self, data)
 

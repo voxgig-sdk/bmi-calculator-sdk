@@ -8,7 +8,7 @@ Complete API reference for the BmiCalculator Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'bmi-calculator_sdk'
+require_relative 'BmiCalculator_sdk'
 
 client = BmiCalculatorSDK.new(options)
 ```
@@ -93,10 +93,10 @@ bmi = client.Bmi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `Float` | Yes |  |
+| `category` | `String` | Yes |  |
+| `height` | `Float` | Yes |  |
+| `weight` | `Float` | Yes |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ bmi = client.Bmi
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Bmi.load({ "id" => "bmi_id" })
+result = client.Bmi.load()
 ```
 
 ### Common Methods

@@ -97,10 +97,10 @@ bmi := client.Bmi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `float64` | Yes |  |
+| `category` | `string` | Yes |  |
+| `height` | `float64` | Yes |  |
+| `weight` | `float64` | Yes |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ bmi := client.Bmi(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Bmi(nil).Load(map[string]any{"id": "bmi_id"}, nil)
+result, err := client.Bmi(nil).Load(nil, nil)
 ```
 
 ### Common Methods

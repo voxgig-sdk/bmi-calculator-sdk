@@ -8,7 +8,7 @@ Complete API reference for the BmiCalculator PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/bmi-calculator_sdk.php';
+require_once __DIR__ . '/bmicalculator_sdk.php';
 
 $client = new BmiCalculatorSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = BmiCalculatorSDK::test();
 
 Create a new `BmiEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): BmiCalculatorUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,10 +92,10 @@ $bmi = $client->Bmi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `float` | Yes |  |
+| `category` | `string` | Yes |  |
+| `height` | `float` | Yes |  |
+| `weight` | `float` | Yes |  |
 
 ### Operations
 
@@ -104,24 +104,24 @@ $bmi = $client->Bmi();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Bmi()->load(["id" => "bmi_id"]);
+$result = $client->Bmi()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -130,7 +130,7 @@ Set the entity match criteria.
 Create a new `BmiEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

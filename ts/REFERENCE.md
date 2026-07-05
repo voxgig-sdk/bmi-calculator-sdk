@@ -116,10 +116,10 @@ const bmi = client.Bmi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bmi` | ``$NUMBER`` | Yes |  |
-| `category` | ``$STRING`` | Yes |  |
-| `height` | ``$NUMBER`` | Yes |  |
-| `weight` | ``$NUMBER`` | Yes |  |
+| `bmi` | `number` | Yes |  |
+| `category` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `weight` | `number` | Yes |  |
 
 ### Operations
 
@@ -128,7 +128,7 @@ const bmi = client.Bmi()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Bmi().load({ id: 'bmi_id' })
+const result = await client.Bmi().load()
 ```
 
 ### Common Methods
