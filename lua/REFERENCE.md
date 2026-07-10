@@ -102,7 +102,7 @@ local bmi = client:Bmi(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Bmi():load()
+local result, err = client:Bmi():load({ height = 1, weight = 1 })
 ```
 
 ### Common Methods

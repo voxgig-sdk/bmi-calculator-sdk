@@ -15,9 +15,9 @@ main: {
           url: "https://bmicalculatorapi.vercel.app"
         }
       ]
+      summary: "This API calculates the Body Mass Index (BMI) based on a user's weight and height."
       title: "BMI Calculator API"
       version: "1.0.0"
+      website: "https://bmicalculatorapi.vercel.app/api/"
     }
   }
-}
-

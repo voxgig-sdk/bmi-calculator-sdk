@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single bmi — the value is the loaded record.
-    bmi, err := client.Bmi(nil).Load(nil, nil)
+    bmi, err := client.Bmi(nil).Load(map[string]any{"height": 1, "weight": 1}, nil)
     if err != nil {
         panic(err)
     }
@@ -294,7 +294,7 @@ Create an instance: `bmi := client.Bmi(nil)`
 #### Example: Load
 
 ```go
-bmi, err := client.Bmi(nil).Load(nil, nil)
+bmi, err := client.Bmi(nil).Load(map[string]any{"height": 1, "weight": 1}, nil)
 if err != nil {
     panic(err)
 }

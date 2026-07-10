@@ -38,11 +38,12 @@ client = BmiCalculatorSDK()
 
 ### 3. Load a bmi
 
+Bmi is nested under height, so provide the `height`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    bmi = client.Bmi().load()
+    bmi = client.Bmi().load({"height": 1, "weight": 1})
     print(bmi)
 except Exception as err:
     print(f"load failed: {err}")
@@ -276,7 +277,7 @@ Create an instance: `bmi = client.Bmi()`
 #### Example: Load
 
 ```python
-bmi = client.Bmi().load()
+bmi = client.Bmi().load({"height": 1, "weight": 1})
 ```
 
 

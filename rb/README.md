@@ -32,10 +32,12 @@ client = BmiCalculatorSDK.new
 
 ### 3. Load a bmi
 
+Bmi is nested under height, so provide the `height`.
+
 ```ruby
 begin
   # load returns the bare Bmi record (raises on error).
-  bmi = client.Bmi.load()
+  bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
   puts bmi
 rescue => err
   warn "load failed: #{err}"
@@ -271,7 +273,7 @@ Create an instance: `bmi = client.Bmi`
 
 ```ruby
 # load returns the bare Bmi record (raises on error).
-bmi = client.Bmi.load()
+bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
 ```
 
 

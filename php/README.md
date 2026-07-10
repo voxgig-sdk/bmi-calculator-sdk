@@ -33,10 +33,12 @@ $client = new BmiCalculatorSDK();
 
 ### 3. Load a bmi
 
+Bmi is nested under height, so provide the `height`.
+
 ```php
 try {
     // load() returns the bare Bmi record (throws on error).
-    $bmi = $client->Bmi()->load();
+    $bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
     print_r($bmi);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -281,7 +283,7 @@ Create an instance: `$bmi = $client->Bmi();`
 
 ```php
 // load() returns the bare Bmi record (throws on error).
-$bmi = $client->Bmi()->load();
+$bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 ```
 
 

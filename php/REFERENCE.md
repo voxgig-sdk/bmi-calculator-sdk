@@ -104,7 +104,7 @@ $bmi = $client->Bmi();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Bmi()->load();
+$result = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 ```
 
 ### Common Methods

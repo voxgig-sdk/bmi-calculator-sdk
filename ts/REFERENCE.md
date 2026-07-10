@@ -128,7 +128,7 @@ const bmi = client.Bmi()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Bmi().load()
+const result = await client.Bmi().load({ height: 1, weight: 1 })
 ```
 
 ### Common Methods

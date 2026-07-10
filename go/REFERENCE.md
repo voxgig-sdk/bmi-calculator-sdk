@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 bmi := client.Bmi(nil)
+fmt.Println(bmi.GetName()) // "bmi"
 ```
 
 ### Fields
@@ -109,7 +110,11 @@ bmi := client.Bmi(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Bmi(nil).Load(nil, nil)
+result, err := client.Bmi(nil).Load(map[string]any{"height": 1, "weight": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -248,14 +245,17 @@
           "name": "Subham Kumar Sinha"
         },
         "description": "This API calculates the Body Mass Index (BMI) based on a user's weight and height. It provides details such as the BMI value and the corresponding health category based on the calculated BMI.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://bmicalculatorapi.vercel.app"
           }
         ],
+        "summary": "This API calculates the Body Mass Index (BMI) based on a user's weight and height.",
         "title": "BMI Calculator API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://bmicalculatorapi.vercel.app/api/"
       },
       "option": {},
       "target": {
@@ -308,6 +308,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -358,6 +361,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

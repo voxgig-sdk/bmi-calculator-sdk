@@ -99,7 +99,7 @@ bmi = client.Bmi()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Bmi().load()
+result = client.Bmi().load({"height": 1, "weight": 1})
 ```
 
 ### Common Methods
