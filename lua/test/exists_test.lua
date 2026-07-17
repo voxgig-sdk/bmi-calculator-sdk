@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- BmiCalculator SDK exists test
 
 local sdk = require("bmi-calculator_sdk")
 
