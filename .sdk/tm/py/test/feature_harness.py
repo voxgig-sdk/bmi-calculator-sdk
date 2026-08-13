@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import BmiCalculatorControl
-from core.error import BmiCalculatorError
-from core.result import BmiCalculatorResult
-from core.spec import BmiCalculatorSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import BmiCalculatorControl
+from projectname_sdk.core.error import BmiCalculatorError
+from projectname_sdk.core.result import BmiCalculatorResult
+from projectname_sdk.core.spec import BmiCalculatorSpec
 
 
 # True when this SDK was generated with the named feature.

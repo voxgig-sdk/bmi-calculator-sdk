@@ -26,8 +26,8 @@ import {
 describe('BmiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BMICALCULATOR_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BMICALCULATOR_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BMI_CALCULATOR_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BMI_CALCULATOR_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = BmiCalculatorSDK.test()

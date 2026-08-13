@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new BmiCalculatorSDK()
-const bmi = await client.Bmi().load()
+const bmi = await client.Bmi().load({ height: 1, weight: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = BmiCalculatorSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = BmiCalculatorSDK.test({
+  entity: {
+    bmi: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const bmi = await client.Bmi().load({ height: 1, weight: 1 })
-// bmi is a bare Bmi populated with mock data
+// bmi is the Bmi entity, populated with mock data
+// — call bmi.data() for the record itself
 console.log(bmi)
 ```
 
@@ -186,7 +195,7 @@ require_once 'bmicalculator_sdk.php';
 $client = new BmiCalculatorSDK();
 
 
-// Load a specific bmi (returns the bare record; throws on error)
+// Load a specific bmi (returns the ENTITY; call data_get() for the record; throws on error)
 $bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 print_r($bmi);
 ```
@@ -217,7 +226,7 @@ require_relative "BmiCalculator_sdk"
 client = BmiCalculatorSDK.new
 
 
-# Load a specific bmi (returns the bare record; raises on error)
+# Load a specific bmi (returns the ENTITY; call data_get for the record)
 bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
 puts bmi
 ```
@@ -351,6 +360,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://bmicalculatorapi.vercel.app](https://bmicalculatorapi.vercel.app)
 

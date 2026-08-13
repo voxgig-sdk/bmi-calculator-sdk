@@ -75,11 +75,11 @@ function bmi_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "BMICALCULATOR_TEST_BMI_ENTID" => [],
-        "BMICALCULATOR_TEST_LIVE" => "FALSE",
+        "BMI_CALCULATOR_TEST_BMI_ENTID" => [],
+        "BMI_CALCULATOR_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["BMICALCULATOR_TEST_LIVE"] === "TRUE";
+    $live = $env["BMI_CALCULATOR_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

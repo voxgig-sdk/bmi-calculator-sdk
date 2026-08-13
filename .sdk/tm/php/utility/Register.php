@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ BmiCalculatorUtility::setRegistrar(function (BmiCalculatorUtility $u): void {
     $u->prepare_params = [BmiCalculatorPrepareParams::class, 'call'];
     $u->prepare_path = [BmiCalculatorPreparePath::class, 'call'];
     $u->prepare_query = [BmiCalculatorPrepareQuery::class, 'call'];
+    $u->graphql_body = [BmiCalculatorGraphql::class, 'body'];
+    $u->graphql_errors = [BmiCalculatorGraphql::class, 'errors'];
     $u->result_basic = [BmiCalculatorResultBasic::class, 'call'];
     $u->result_body = [BmiCalculatorResultBody::class, 'call'];
     $u->result_headers = [BmiCalculatorResultHeaders::class, 'call'];

@@ -43,8 +43,8 @@ class BmiCalculatorTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('BMICALCULATOR_TEST_LIVE');
-        $override = self::getenv('BMICALCULATOR_TEST_OVERRIDE');
+        $live = self::getenv('BMI_CALCULATOR_TEST_LIVE');
+        $override = self::getenv('BMI_CALCULATOR_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class BmiCalculatorTestRunner
             }
         }
 
-        $explain = self::getenv('BMICALCULATOR_TEST_EXPLAIN');
+        $explain = self::getenv('BMI_CALCULATOR_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['BMICALCULATOR_TEST_EXPLAIN'] = $explain;
+            $m['BMI_CALCULATOR_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

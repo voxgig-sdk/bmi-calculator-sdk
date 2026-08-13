@@ -92,8 +92,8 @@ $bmi = $client->Bmi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `Category` | `string` | Yes |  |
 | `bmi` | `float` | Yes |  |
-| `category` | `string` | Yes |  |
 | `height` | `float` | Yes |  |
 | `weight` | `float` | Yes |  |
 

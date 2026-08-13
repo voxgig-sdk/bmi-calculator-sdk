@@ -15,8 +15,8 @@ declare(strict_types=1);
 /** Bmi entity data model. */
 class Bmi
 {
+    public string $Category;
     public float $bmi;
-    public string $category;
     public float $height;
     public float $weight;
 }

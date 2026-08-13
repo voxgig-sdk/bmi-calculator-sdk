@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# BmiCalculator SDK exists test
 
 import pytest
 from bmicalculator_sdk import BmiCalculatorSDK

@@ -2,22 +2,22 @@
   "existing": {
     "bmi": {
       "BMI00": {
-        "bmi": 40,
-        "category": "s29",
+        "Category": "s28",
+        "bmi": 41,
         "height": 42,
         "weight": 43,
         "id": "BMI00"
       },
       "BMI01": {
-        "bmi": 80,
-        "category": "s51",
+        "Category": "s50",
+        "bmi": 81,
         "height": 82,
         "weight": 83,
         "id": "BMI01"
       },
       "BMI02": {
-        "bmi": 120,
-        "category": "s79",
+        "Category": "s78",
+        "bmi": 121,
         "height": 122,
         "weight": 123,
         "id": "BMI02"
@@ -27,8 +27,8 @@
   "new": {
     "bmi": {
       "bmi_ref01": {
-        "bmi": 160,
-        "category": "sa1",
+        "Category": "sa0",
+        "bmi": 161,
         "height": 162,
         "weight": 163
       }

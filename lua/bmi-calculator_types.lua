@@ -7,8 +7,8 @@
 -- edit by hand.
 
 ---@class Bmi
+---@field Category string
 ---@field bmi number
----@field category string
 ---@field height number
 ---@field weight number
 

@@ -26,16 +26,16 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "bmi",
+						"name": "Category",
 						"req": true,
-						"type": "`$NUMBER`",
+						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "category",
+						"name": "bmi",
 						"req": true,
-						"type": "`$STRING`",
+						"type": "`$NUMBER`",
 						"index$": 1,
 					},
 					map[string]any{
@@ -85,6 +85,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/bmi/{weight}/{height}",
 								"parts": []any{
@@ -106,7 +107,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

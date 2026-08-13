@@ -37,7 +37,7 @@ Bmi is nested under height, so provide the `height`.
 
 ```php
 try {
-    // load() returns the bare Bmi record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Bmi record (throws on error).
     $bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
     print_r($bmi);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $bmi = $client->Bmi()->load();
+    $bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,8 +125,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = BmiCalculatorSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$bmi = $client->Bmi()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 print_r($bmi);
 ```
 
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -246,8 +247,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `Category` |  |
 | `bmi` |  |
-| `category` |  |
 | `height` |  |
 | `weight` |  |
 
@@ -274,15 +275,15 @@ Create an instance: `$bmi = $client->Bmi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `string` |  |
 | `bmi` | `float` |  |
-| `category` | `string` |  |
 | `height` | `float` |  |
 | `weight` | `float` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Bmi record (throws on error).
+// load() returns the ENTITY — call data_get() for the Bmi record (throws on error).
 $bmi = $client->Bmi()->load(["height" => 1, "weight" => 1]);
 ```
 
@@ -364,7 +365,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $bmi = $client->Bmi();
-$bmi->load();
+$bmi->load(["height" => 1, "weight" => 1]);
 
 // $bmi->data_get() now returns the bmi data from the last load
 // $bmi->match_get() returns the last match criteria

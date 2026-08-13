@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local bmi, err = client:Bmi():load()
+local bmi, err = client:Bmi():load({ height = 1, weight = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Bmi():load()
+local result, err = client:Bmi():load({ height = 1, weight = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -227,8 +227,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
+| `Category` |  |
 | `bmi` |  |
-| `category` |  |
 | `height` |  |
 | `weight` |  |
 
@@ -255,8 +255,8 @@ Create an instance: `local bmi = client:Bmi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `string` |  |
 | `bmi` | `number` |  |
-| `category` | `string` |  |
 | `height` | `number` |  |
 | `weight` | `number` |  |
 
@@ -344,7 +344,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local bmi = client:Bmi()
-bmi:load()
+bmi:load({ height = 1, weight = 1 })
 
 -- bmi:data_get() now returns the bmi data from the last load
 -- bmi:match_get() returns the last match criteria

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from bmicalculator_sdk.utility.voxgig_struct import voxgig_struct as vs
 from bmicalculator_sdk import BmiCalculatorSDK
-from core import helpers
+from bmicalculator_sdk.core import helpers
 from test import runner
 
 
@@ -65,11 +65,11 @@ def _bmi_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "BMICALCULATOR_TEST_BMI_ENTID": {},
-        "BMICALCULATOR_TEST_LIVE": "FALSE",
+        "BMI_CALCULATOR_TEST_BMI_ENTID": {},
+        "BMI_CALCULATOR_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("BMICALCULATOR_TEST_LIVE") == "TRUE"
+    live = env.get("BMI_CALCULATOR_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -39,7 +39,7 @@ client = BmiCalculatorSDK()
 ### 3. Load a bmi
 
 Bmi is nested under height, so provide the `height`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,7 +56,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    bmi = client.Bmi().load()
+    bmi = client.Bmi().load({"height": 1, "weight": 1})
     print(bmi)
 except Exception as err:
     print(f"load failed: {err}")
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = BmiCalculatorSDK.test()
 
-# Entity ops return the bare record and raise on error.
-bmi = client.Bmi().load()
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+bmi = client.Bmi().load({"height": 1, "weight": 1})
 # bmi contains the mock response record
 ```
 
@@ -219,7 +220,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -241,8 +242,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `Category` |  |
 | `bmi` |  |
-| `category` |  |
 | `height` |  |
 | `weight` |  |
 
@@ -269,8 +270,8 @@ Create an instance: `bmi = client.Bmi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `str` |  |
 | `bmi` | `float` |  |
-| `category` | `str` |  |
 | `height` | `float` |  |
 | `weight` | `float` |  |
 
@@ -357,7 +358,7 @@ stores the returned data and match criteria internally.
 
 ```python
 bmi = client.Bmi()
-bmi.load()
+bmi.load({"height": 1, "weight": 1})
 
 # bmi.data_get() now returns the bmi data from the last load
 # bmi.match_get() returns the last match criteria

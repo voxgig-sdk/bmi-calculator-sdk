@@ -16,11 +16,11 @@
 import pytest
 
 from bmicalculator_sdk import BmiCalculatorSDK
-from core.error import BmiCalculatorError
-from core.result import BmiCalculatorResult
-from core.response import BmiCalculatorResponse
-from core.spec import BmiCalculatorSpec
-from feature.base_feature import BmiCalculatorBaseFeature
+from bmicalculator_sdk.core.error import BmiCalculatorError
+from bmicalculator_sdk.core.result import BmiCalculatorResult
+from bmicalculator_sdk.core.response import BmiCalculatorResponse
+from bmicalculator_sdk.core.spec import BmiCalculatorSpec
+from bmicalculator_sdk.feature.base_feature import BmiCalculatorBaseFeature
 
 
 def _client():

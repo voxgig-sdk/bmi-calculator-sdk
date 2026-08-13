@@ -36,7 +36,7 @@ Bmi is nested under height, so provide the `height`.
 
 ```ruby
 begin
-  # load returns the bare Bmi record (raises on error).
+  # load returns the ENTITY — call data_get for the Bmi record (raises on error).
   bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
   puts bmi
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  bmi = client.Bmi.load()
+  bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = BmiCalculatorSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-bmi = client.Bmi.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
 puts bmi
 ```
 
@@ -236,8 +237,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
+| `Category` |  |
 | `bmi` |  |
-| `category` |  |
 | `height` |  |
 | `weight` |  |
 
@@ -264,15 +265,15 @@ Create an instance: `bmi = client.Bmi`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `String` |  |
 | `bmi` | `Float` |  |
-| `category` | `String` |  |
 | `height` | `Float` |  |
 | `weight` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Bmi record (raises on error).
+# load returns the ENTITY — call data_get for the Bmi record (raises on error).
 bmi = client.Bmi.load({ "height" => 1, "weight" => 1 })
 ```
 
@@ -354,7 +355,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 bmi = client.Bmi
-bmi.load()
+bmi.load({ "height" => 1, "weight" => 1 })
 
 # bmi.data_get now returns the bmi data from the last load
 # bmi.match_get returns the last match criteria

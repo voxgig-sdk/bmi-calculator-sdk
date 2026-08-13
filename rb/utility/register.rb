@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ BmiCalculatorUtility.registrar = ->(u) {
   u.prepare_params = BmiCalculatorUtilities::PrepareParams
   u.prepare_path = BmiCalculatorUtilities::PreparePath
   u.prepare_query = BmiCalculatorUtilities::PrepareQuery
+  u.graphql_body = BmiCalculatorUtilities::GraphqlBody
+  u.graphql_errors = BmiCalculatorUtilities::GraphqlErrors
   u.result_basic = BmiCalculatorUtilities::ResultBasic
   u.result_body = BmiCalculatorUtilities::ResultBody
   u.result_headers = BmiCalculatorUtilities::ResultHeaders

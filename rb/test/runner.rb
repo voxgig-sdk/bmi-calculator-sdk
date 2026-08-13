@@ -23,8 +23,8 @@ module BmiCalculatorTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("BMICALCULATOR_TEST_LIVE")
-    override = getenv("BMICALCULATOR_TEST_OVERRIDE")
+    live = getenv("BMI_CALCULATOR_TEST_LIVE")
+    override = getenv("BMI_CALCULATOR_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module BmiCalculatorTestRunner
       end
     end
 
-    explain = getenv("BMICALCULATOR_TEST_EXPLAIN")
-    m["BMICALCULATOR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("BMI_CALCULATOR_TEST_EXPLAIN")
+    m["BMI_CALCULATOR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

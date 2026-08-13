@@ -57,7 +57,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const bmi = await client.Bmi().load()
+  const bmi = await client.Bmi().load({ height: 1, weight: 1 })
   console.log(bmi)
 } catch (err) {
   console.error('load failed:', err)
@@ -124,8 +124,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = BmiCalculatorSDK.test()
 
-const bmi = await client.Bmi().load()
-// bmi is a bare entity populated with mock response data
+const bmi = await client.Bmi().load({ height: 1, weight: 1 })
+// bmi is the entity, populated with mock response data
+// — call bmi.data() for the record itself
 console.log(bmi)
 ```
 
@@ -144,7 +145,7 @@ Entity instances remember their last match and data:
 const entity = client.Bmi()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ height: 1, weight: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -288,8 +289,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
+| `Category` |  |
 | `bmi` |  |
-| `category` |  |
 | `height` |  |
 | `weight` |  |
 
@@ -316,8 +317,8 @@ Create an instance: `const bmi = client.Bmi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `string` |  |
 | `bmi` | `number` |  |
-| `category` | `string` |  |
 | `height` | `number` |  |
 | `weight` | `number` |  |
 
@@ -398,7 +399,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const bmi = client.Bmi()
-await bmi.load()
+await bmi.load({ height: 1, weight: 1 })
 
 // bmi.data() now returns the bmi data from the last `load`
 // bmi.match() returns the last match criteria

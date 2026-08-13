@@ -19,11 +19,15 @@ import {
 describe('BmiDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BMICALCULATOR_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BMICALCULATOR_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BMI_CALCULATOR_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BMI_CALCULATOR_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new BmiCalculatorSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -80,17 +84,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'BMICALCULATOR_TEST_BMI_ENTID': {},
-    'BMICALCULATOR_TEST_LIVE': 'FALSE',
+    'BMI_CALCULATOR_TEST_BMI_ENTID': {},
+    'BMI_CALCULATOR_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.BMICALCULATOR_TEST_LIVE
+  const live = 'TRUE' === env.BMI_CALCULATOR_TEST_LIVE
 
   if (live) {
     const client = new BmiCalculatorSDK({
     })
 
-    let idmap: any = env['BMICALCULATOR_TEST_BMI_ENTID']
+    let idmap: any = env['BMI_CALCULATOR_TEST_BMI_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

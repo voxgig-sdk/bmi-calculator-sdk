@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-bmi, err := client.Bmi(nil).Load(nil, nil)
+bmi, err := client.Bmi(nil).Load(map[string]any{"height": 1, "weight": 1}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 bmi, err := client.Bmi(nil).Load(
-    nil, nil,
+    map[string]any{"height": 1, "weight": 1}, nil,
 )
 if err != nil {
     panic(err)
@@ -258,8 +258,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"Category"` |  |
 | `"bmi"` |  |
-| `"category"` |  |
 | `"height"` |  |
 | `"weight"` |  |
 
@@ -286,8 +286,8 @@ Create an instance: `bmi := client.Bmi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `Category` | `string` |  |
 | `bmi` | `float64` |  |
-| `category` | `string` |  |
 | `height` | `float64` |  |
 | `weight` | `float64` |  |
 
@@ -376,7 +376,7 @@ stores the returned data and match criteria internally.
 
 ```go
 bmi := client.Bmi(nil)
-bmi.Load(nil, nil)
+bmi.Load(map[string]any{"height": 1, "weight": 1}, nil)
 
 // bmi.Data() now returns the bmi data from the last load
 // bmi.Match() returns the last match criteria

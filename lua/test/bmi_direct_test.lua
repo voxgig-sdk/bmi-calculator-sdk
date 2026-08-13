@@ -70,11 +70,11 @@ function bmi_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["BMICALCULATOR_TEST_BMI_ENTID"] = {},
-    ["BMICALCULATOR_TEST_LIVE"] = "FALSE",
+    ["BMI_CALCULATOR_TEST_BMI_ENTID"] = {},
+    ["BMI_CALCULATOR_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["BMICALCULATOR_TEST_LIVE"] == "TRUE"
+  local live = env["BMI_CALCULATOR_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -26,16 +26,16 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "bmi",
+            ["name"] = "Category",
             ["req"] = true,
-            ["type"] = "`$NUMBER`",
+            ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "category",
+            ["name"] = "bmi",
             ["req"] = true,
-            ["type"] = "`$STRING`",
+            ["type"] = "`$NUMBER`",
             ["index$"] = 1,
           },
           {
@@ -85,6 +85,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/bmi/{weight}/{height}",
                 ["parts"] = {

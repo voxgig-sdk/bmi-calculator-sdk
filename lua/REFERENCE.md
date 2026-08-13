@@ -90,8 +90,8 @@ local bmi = client:Bmi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `Category` | `string` | Yes |  |
 | `bmi` | `number` | Yes |  |
-| `category` | `string` | Yes |  |
 | `height` | `number` | Yes |  |
 | `weight` | `number` | Yes |  |
 

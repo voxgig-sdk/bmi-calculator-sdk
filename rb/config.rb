@@ -27,16 +27,16 @@ module BmiCalculatorConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "bmi",
+              "name" => "Category",
               "req" => true,
-              "type" => "`$NUMBER`",
+              "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "category",
+              "name" => "bmi",
               "req" => true,
-              "type" => "`$STRING`",
+              "type" => "`$NUMBER`",
               "index$" => 1,
             },
             {
@@ -86,6 +86,7 @@ module BmiCalculatorConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/bmi/{weight}/{height}",
                   "parts" => [

@@ -6,8 +6,8 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Bmi {
+  Category: string
   bmi: number
-  category: string
   height: number
   weight: number
 }

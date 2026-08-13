@@ -87,8 +87,8 @@ bmi = client.Bmi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `Category` | `str` | Yes |  |
 | `bmi` | `float` | Yes |  |
-| `category` | `str` | Yes |  |
 | `height` | `float` | Yes |  |
 | `weight` | `float` | Yes |  |
 

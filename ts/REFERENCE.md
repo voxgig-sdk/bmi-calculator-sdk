@@ -116,8 +116,8 @@ const bmi = client.Bmi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `Category` | `string` | Yes |  |
 | `bmi` | `number` | Yes |  |
-| `category` | `string` | Yes |  |
 | `height` | `number` | Yes |  |
 | `weight` | `number` | Yes |  |
 

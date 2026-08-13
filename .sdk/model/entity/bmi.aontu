@@ -6,14 +6,14 @@ main: kit: entity: bmi: {
 
   fields: [
     {
+      name: "Category"
+      req: true
+      type: "`$STRING`"
+    }
+    {
       name: "bmi"
       req: true
       type: "`$NUMBER`"
-    }
-    {
-      name: "category"
-      req: true
-      type: "`$STRING`"
     }
     {
       name: "height"

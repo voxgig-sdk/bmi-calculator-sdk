@@ -10,11 +10,11 @@
 
 # Bmi entity data model.
 #
+# @!attribute [rw] Category
+#   @return [String]
+#
 # @!attribute [rw] bmi
 #   @return [Float]
-#
-# @!attribute [rw] category
-#   @return [String]
 #
 # @!attribute [rw] height
 #   @return [Float]
@@ -22,8 +22,8 @@
 # @!attribute [rw] weight
 #   @return [Float]
 Bmi = Struct.new(
+  :Category,
   :bmi,
-  :category,
   :height,
   :weight,
   keyword_init: true

@@ -98,8 +98,8 @@ fmt.Println(bmi.GetName()) // "bmi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `Category` | `string` | Yes |  |
 | `bmi` | `float64` | Yes |  |
-| `category` | `string` | Yes |  |
 | `height` | `float64` | Yes |  |
 | `weight` | `float64` | Yes |  |
 
