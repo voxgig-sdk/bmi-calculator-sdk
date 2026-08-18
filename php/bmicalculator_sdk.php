@@ -40,7 +40,7 @@ class BmiCalculatorSDK
         $utility = new BmiCalculatorUtility();
         $this->_utility = $utility;
 
-        $config = BmiCalculatorConfig::make_config();
+        $config = BmiCalculatorConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

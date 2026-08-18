@@ -1,5 +1,8 @@
 -- BmiCalculator SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,32 +28,24 @@ local function make_config()
       ["bmi"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "Category",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "bmi",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "height",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "weight",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 3,
           },
         },
         ["name"] = "bmi",
@@ -60,28 +55,23 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = 1.75,
                       ["kind"] = "param",
                       ["name"] = "height",
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$NUMBER`",
-                      ["index$"] = 0,
                     },
                     {
-                      ["active"] = true,
                       ["example"] = 87.9,
                       ["kind"] = "param",
                       ["name"] = "weight",
                       ["orig"] = "weight",
                       ["reqd"] = true,
                       ["type"] = "`$NUMBER`",
-                      ["index$"] = 1,
                     },
                   },
                 },
@@ -104,10 +94,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

@@ -28,7 +28,7 @@ class BmiCalculatorSDK
     utility = BmiCalculatorUtility.new
     @_utility = utility
 
-    config = BmiCalculatorConfig.make_config
+    config = BmiCalculatorConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

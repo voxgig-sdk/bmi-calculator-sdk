@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://bmicalculatorapi.vercel.app',
+    base: "https://bmicalculatorapi.vercel.app",
 
     headers: {
       "content-type": "application/json"
@@ -55,32 +55,24 @@ class Config {
     "bmi": {
       "fields": [
         {
-          "active": true,
           "name": "Category",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "bmi",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "height",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "weight",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         }
       ],
       "name": "bmi",
@@ -90,28 +82,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 1.75,
                     "kind": "param",
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$NUMBER`",
-                    "index$": 0
+                    "type": "`$NUMBER`"
                   },
                   {
-                    "active": true,
                     "example": 87.9,
                     "kind": "param",
                     "name": "weight",
                     "orig": "weight",
                     "reqd": true,
-                    "type": "`$NUMBER`",
-                    "index$": 1
+                    "type": "`$NUMBER`"
                   }
                 ]
               },
@@ -133,11 +120,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

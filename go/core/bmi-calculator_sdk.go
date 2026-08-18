@@ -23,7 +23,7 @@ func NewBmiCalculatorSDK(options map[string]any) *BmiCalculatorSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,
