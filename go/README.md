@@ -6,7 +6,7 @@ The Golang SDK for the BmiCalculator API — an entity-oriented client using sta
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Bmi(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,10 +258,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"Category"` |  |
-| `"bmi"` |  |
-| `"height"` |  |
-| `"weight"` |  |
+| `"Category"` | Health category based on BMI |
+| `"bmi"` | Calculated BMI (trimmed to 3 decimal points) |
+| `"height"` | Provided height in meters |
+| `"weight"` | Provided weight in kilograms |
 
 Operations: Load.
 
@@ -286,10 +286,10 @@ Create an instance: `bmi := client.Bmi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Category` | `string` |  |
-| `bmi` | `float64` |  |
-| `height` | `float64` |  |
-| `weight` | `float64` |  |
+| `Category` | `string` | Health category based on BMI |
+| `bmi` | `float64` | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `float64` | Provided height in meters |
+| `weight` | `float64` | Provided weight in kilograms |
 
 #### Example: Load
 

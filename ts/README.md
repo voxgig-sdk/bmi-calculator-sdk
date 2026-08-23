@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -289,10 +289,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `Category` |  |
-| `bmi` |  |
-| `height` |  |
-| `weight` |  |
+| `Category` | Health category based on BMI |
+| `bmi` | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | Provided height in meters |
+| `weight` | Provided weight in kilograms |
 
 Operations: load.
 
@@ -317,10 +317,10 @@ Create an instance: `const bmi = client.Bmi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Category` | `string` |  |
-| `bmi` | `number` |  |
-| `height` | `number` |  |
-| `weight` | `number` |  |
+| `Category` | `string` | Health category based on BMI |
+| `bmi` | `number` | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `number` | Provided height in meters |
+| `weight` | `number` | Provided weight in kilograms |
 
 #### Example: Load
 

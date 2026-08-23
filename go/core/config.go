@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "BmiCalculator",
+			"slug": "bmi-calculator",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,21 +37,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "Category",
 						"req": true,
+						"short": "Health category based on BMI",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bmi",
 						"req": true,
+						"short": "Calculated BMI (trimmed to 3 decimal points)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "height",
 						"req": true,
+						"short": "Provided height in meters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "weight",
 						"req": true,
+						"short": "Provided weight in kilograms",
 						"type": "`$NUMBER`",
 					},
 				},

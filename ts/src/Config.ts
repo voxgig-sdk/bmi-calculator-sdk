@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'BmiCalculator',
+        slug: "bmi-calculator",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -57,21 +68,25 @@ class Config {
         {
           "name": "Category",
           "req": true,
+          "short": "Health category based on BMI",
           "type": "`$STRING`"
         },
         {
           "name": "bmi",
           "req": true,
+          "short": "Calculated BMI (trimmed to 3 decimal points)",
           "type": "`$NUMBER`"
         },
         {
           "name": "height",
           "req": true,
+          "short": "Provided height in meters",
           "type": "`$NUMBER`"
         },
         {
           "name": "weight",
           "req": true,
+          "short": "Provided weight in kilograms",
           "type": "`$NUMBER`"
         }
       ],

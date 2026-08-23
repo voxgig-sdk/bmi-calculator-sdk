@@ -98,10 +98,10 @@ fmt.Println(bmi.GetName()) // "bmi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Category` | `string` | Yes |  |
-| `bmi` | `float64` | Yes |  |
-| `height` | `float64` | Yes |  |
-| `weight` | `float64` | Yes |  |
+| `Category` | `string` | Yes | Health category based on BMI |
+| `bmi` | `float64` | Yes | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `float64` | Yes | Provided height in meters |
+| `weight` | `float64` | Yes | Provided weight in kilograms |
 
 ### Operations
 

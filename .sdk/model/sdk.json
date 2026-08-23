@@ -36,24 +36,28 @@
               "active": true,
               "name": "Category",
               "req": true,
+              "short": "Health category based on BMI",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "bmi",
               "req": true,
+              "short": "Calculated BMI (trimmed to 3 decimal points)",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "height",
               "req": true,
+              "short": "Provided height in meters",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "weight",
               "req": true,
+              "short": "Provided weight in kilograms",
               "type": "`$NUMBER`"
             }
           ],

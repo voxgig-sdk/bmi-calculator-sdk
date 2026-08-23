@@ -93,10 +93,10 @@ bmi = client.Bmi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Category` | `String` | Yes |  |
-| `bmi` | `Float` | Yes |  |
-| `height` | `Float` | Yes |  |
-| `weight` | `Float` | Yes |  |
+| `Category` | `String` | Yes | Health category based on BMI |
+| `bmi` | `Float` | Yes | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `Float` | Yes | Provided height in meters |
+| `weight` | `Float` | Yes | Provided weight in kilograms |
 
 ### Operations
 

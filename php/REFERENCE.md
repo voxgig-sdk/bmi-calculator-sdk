@@ -92,10 +92,10 @@ $bmi = $client->Bmi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Category` | `string` | Yes |  |
-| `bmi` | `float` | Yes |  |
-| `height` | `float` | Yes |  |
-| `weight` | `float` | Yes |  |
+| `Category` | `string` | Yes | Health category based on BMI |
+| `bmi` | `float` | Yes | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `float` | Yes | Provided height in meters |
+| `weight` | `float` | Yes | Provided weight in kilograms |
 
 ### Operations
 

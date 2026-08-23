@@ -90,10 +90,10 @@ local bmi = client:Bmi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Category` | `string` | Yes |  |
-| `bmi` | `number` | Yes |  |
-| `height` | `number` | Yes |  |
-| `weight` | `number` | Yes |  |
+| `Category` | `string` | Yes | Health category based on BMI |
+| `bmi` | `number` | Yes | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `number` | Yes | Provided height in meters |
+| `weight` | `number` | Yes | Provided weight in kilograms |
 
 ### Operations
 

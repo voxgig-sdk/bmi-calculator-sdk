@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "BmiCalculator",
+            "slug": "bmi-calculator",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,21 +54,25 @@ def make_config():
           {
             "name": "Category",
             "req": True,
+            "short": "Health category based on BMI",
             "type": "`$STRING`",
           },
           {
             "name": "bmi",
             "req": True,
+            "short": "Calculated BMI (trimmed to 3 decimal points)",
             "type": "`$NUMBER`",
           },
           {
             "name": "height",
             "req": True,
+            "short": "Provided height in meters",
             "type": "`$NUMBER`",
           },
           {
             "name": "weight",
             "req": True,
+            "short": "Provided weight in kilograms",
             "type": "`$NUMBER`",
           },
         ],

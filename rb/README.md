@@ -237,10 +237,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `Category` |  |
-| `bmi` |  |
-| `height` |  |
-| `weight` |  |
+| `Category` | Health category based on BMI |
+| `bmi` | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | Provided height in meters |
+| `weight` | Provided weight in kilograms |
 
 Operations: Load.
 
@@ -265,10 +265,10 @@ Create an instance: `bmi = client.Bmi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Category` | `String` |  |
-| `bmi` | `Float` |  |
-| `height` | `Float` |  |
-| `weight` | `Float` |  |
+| `Category` | `String` | Health category based on BMI |
+| `bmi` | `Float` | Calculated BMI (trimmed to 3 decimal points) |
+| `height` | `Float` | Provided height in meters |
+| `weight` | `Float` | Provided weight in kilograms |
 
 #### Example: Load
 
