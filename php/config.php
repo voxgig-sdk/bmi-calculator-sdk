@@ -42,6 +42,7 @@ class BmiCalculatorConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
