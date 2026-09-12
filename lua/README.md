@@ -230,6 +230,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `Category` | Health category based on BMI |
 | `bmi` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | Provided height in meters |
+| `id` |  |
 | `weight` | Provided weight in kilograms |
 
 Operations: Load.
@@ -258,6 +259,7 @@ Create an instance: `local bmi = client:Bmi(nil)`
 | `Category` | `string` | Health category based on BMI |
 | `bmi` | `number` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `number` | Provided height in meters |
+| `id` | `string` |  |
 | `weight` | `number` | Provided weight in kilograms |
 
 #### Example: Load

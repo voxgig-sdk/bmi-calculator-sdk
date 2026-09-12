@@ -261,6 +261,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"Category"` | Health category based on BMI |
 | `"bmi"` | Calculated BMI (trimmed to 3 decimal points) |
 | `"height"` | Provided height in meters |
+| `"id"` |  |
 | `"weight"` | Provided weight in kilograms |
 
 Operations: Load.
@@ -289,6 +290,7 @@ Create an instance: `bmi := client.Bmi(nil)`
 | `Category` | `string` | Health category based on BMI |
 | `bmi` | `float64` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `float64` | Provided height in meters |
+| `id` | `string` |  |
 | `weight` | `float64` | Provided weight in kilograms |
 
 #### Example: Load

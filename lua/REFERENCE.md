@@ -93,6 +93,7 @@ local bmi = client:Bmi(nil)
 | `Category` | `string` | Yes | Health category based on BMI |
 | `bmi` | `number` | Yes | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `number` | Yes | Provided height in meters |
+| `id` | `string` | No |  |
 | `weight` | `number` | Yes | Provided weight in kilograms |
 
 ### Operations

@@ -149,7 +149,7 @@ await entity.load({ height: 1, weight: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -292,6 +292,7 @@ The `prepare()` method returns:
 | `Category` | Health category based on BMI |
 | `bmi` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | Provided height in meters |
+| `id` |  |
 | `weight` | Provided weight in kilograms |
 
 Operations: load.
@@ -320,6 +321,7 @@ Create an instance: `const bmi = client.Bmi()`
 | `Category` | `string` | Health category based on BMI |
 | `bmi` | `number` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `number` | Provided height in meters |
+| `id` | `string` |  |
 | `weight` | `number` | Provided weight in kilograms |
 
 #### Example: Load

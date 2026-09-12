@@ -17,6 +17,7 @@ type Bmi struct {
 	Category string `json:"Category"`
 	Bmi float64 `json:"bmi"`
 	Height float64 `json:"height"`
+	Id *string `json:"id,omitempty"`
 	Weight float64 `json:"weight"`
 }
 

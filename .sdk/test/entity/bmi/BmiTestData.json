@@ -2,35 +2,35 @@
   "existing": {
     "bmi": {
       "BMI00": {
-        "Category": "s28",
-        "bmi": 41,
-        "height": 42,
-        "weight": 43,
-        "id": "BMI00"
+        "Category": "s32",
+        "bmi": 51,
+        "height": 52,
+        "id": "BMI00",
+        "weight": 54
       },
       "BMI01": {
-        "Category": "s50",
-        "bmi": 81,
-        "height": 82,
-        "weight": 83,
-        "id": "BMI01"
+        "Category": "s64",
+        "bmi": 101,
+        "height": 102,
+        "id": "BMI01",
+        "weight": 104
       },
       "BMI02": {
-        "Category": "s78",
-        "bmi": 121,
-        "height": 122,
-        "weight": 123,
-        "id": "BMI02"
+        "Category": "s96",
+        "bmi": 151,
+        "height": 152,
+        "id": "BMI02",
+        "weight": 154
       }
     }
   },
   "new": {
     "bmi": {
       "bmi_ref01": {
-        "Category": "sa0",
-        "bmi": 161,
-        "height": 162,
-        "weight": 163
+        "Category": "sc8",
+        "bmi": 201,
+        "height": 202,
+        "weight": 204
       }
     }
   }

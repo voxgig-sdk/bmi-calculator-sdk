@@ -48,9 +48,13 @@ class TestBmiEntity:
 
         # LOAD
         bmi_ref01_ent = client.Bmi(None)
-        bmi_ref01_match_dt0 = {}
+        bmi_ref01_match_dt0 = {
+            "id": bmi_ref01_data["id"],
+        }
         bmi_ref01_data_dt0_loaded = bmi_ref01_ent.load(bmi_ref01_match_dt0, None)
-        assert bmi_ref01_data_dt0_loaded is not None
+        bmi_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(bmi_ref01_data_dt0_loaded))
+        assert bmi_ref01_data_dt0_load_result is not None
+        assert bmi_ref01_data_dt0_load_result["id"] == bmi_ref01_data["id"]
 
 
 
@@ -99,6 +103,10 @@ def _bmi_basic_setup(extra):
 
     if env.get("BMI_CALCULATOR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
             },
             extra or {},

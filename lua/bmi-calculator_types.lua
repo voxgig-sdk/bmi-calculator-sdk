@@ -10,6 +10,7 @@
 ---@field Category string
 ---@field bmi number
 ---@field height number
+---@field id? string
 ---@field weight number
 
 ---@class BmiLoadMatch

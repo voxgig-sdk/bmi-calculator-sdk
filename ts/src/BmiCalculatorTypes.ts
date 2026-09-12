@@ -9,6 +9,7 @@ export interface Bmi {
   Category: string
   bmi: number
   height: number
+  id?: string
   weight: number
 }
 

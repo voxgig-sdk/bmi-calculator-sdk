@@ -250,6 +250,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `Category` | Health category based on BMI |
 | `bmi` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | Provided height in meters |
+| `id` |  |
 | `weight` | Provided weight in kilograms |
 
 Operations: Load.
@@ -278,6 +279,7 @@ Create an instance: `$bmi = $client->Bmi();`
 | `Category` | `string` | Health category based on BMI |
 | `bmi` | `float` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `float` | Provided height in meters |
+| `id` | `string` |  |
 | `weight` | `float` | Provided weight in kilograms |
 
 #### Example: Load

@@ -48,9 +48,13 @@ class BmiEntityTest extends TestCase
 
         // LOAD
         $bmi_ref01_ent = $client->Bmi(null);
-        $bmi_ref01_match_dt0 = [];
+        $bmi_ref01_match_dt0 = [
+            "id" => $bmi_ref01_data["id"],
+        ];
         $bmi_ref01_data_dt0_loaded = $bmi_ref01_ent->load($bmi_ref01_match_dt0, null);
-        $this->assertNotNull($bmi_ref01_data_dt0_loaded);
+        $bmi_ref01_data_dt0_load_result = Helpers::to_map(is_object($bmi_ref01_data_dt0_loaded) && method_exists($bmi_ref01_data_dt0_loaded, 'data_get') ? $bmi_ref01_data_dt0_loaded->data_get() : $bmi_ref01_data_dt0_loaded);
+        $this->assertNotNull($bmi_ref01_data_dt0_load_result);
+        $this->assertEquals($bmi_ref01_data_dt0_load_result["id"], $bmi_ref01_data["id"]);
 
     }
 }
@@ -94,9 +98,16 @@ function bmi_basic_setup($extra)
 
     if ($env["BMI_CALCULATOR_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new BmiCalculatorSDK(Helpers::to_map($merged_opts));
     }

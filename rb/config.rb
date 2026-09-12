@@ -50,24 +50,44 @@ module BmiCalculatorConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "bmi",
               "req" => true,
               "short" => "Calculated BMI (trimmed to 3 decimal points)",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "height",
               "req" => true,
               "short" => "Provided height in meters",
               "type" => "`$NUMBER`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
+              "format" => "float",
               "name" => "weight",
               "req" => true,
               "short" => "Provided weight in kilograms",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "from" => {
+              "height" => "height",
+              "weight" => "weight",
+            },
+            "name" => "id",
+            "parts" => [
+              "weight",
+              "height",
+            ],
+            "sep" => "/",
+          },
           "name" => "bmi",
           "op" => {
             "load" => {
@@ -98,11 +118,19 @@ module BmiCalculatorConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/bmi/{weight}/{height}",
-                  "parts" => [
-                    "api",
-                    "bmi",
-                    "{weight}",
-                    "{height}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "bmi",
+                    },
+                    {
+                      "var" => "weight",
+                    },
+                    {
+                      "var" => "height",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -114,6 +142,12 @@ module BmiCalculatorConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "bmi",
+                    "{weight}",
+                    "{height}",
+                  ],
                 },
               ],
             },

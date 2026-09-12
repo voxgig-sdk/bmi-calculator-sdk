@@ -1,6 +1,14 @@
 # BmiCalculator SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -59,24 +67,44 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "bmi",
             "req": True,
             "short": "Calculated BMI (trimmed to 3 decimal points)",
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "height",
             "req": True,
             "short": "Provided height in meters",
             "type": "`$NUMBER`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
+            "format": "float",
             "name": "weight",
             "req": True,
             "short": "Provided weight in kilograms",
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "from": {
+            "height": "height",
+            "weight": "weight",
+          },
+          "name": "id",
+          "parts": [
+            "weight",
+            "height",
+          ],
+          "sep": "/",
+        },
         "name": "bmi",
         "op": {
           "load": {
@@ -107,11 +135,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/bmi/{weight}/{height}",
-                "parts": [
-                  "api",
-                  "bmi",
-                  "{weight}",
-                  "{height}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "bmi",
+                  },
+                  {
+                    "var": "weight",
+                  },
+                  {
+                    "var": "height",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -123,6 +159,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "bmi",
+                  "{weight}",
+                  "{height}",
+                ],
               },
             ],
           },

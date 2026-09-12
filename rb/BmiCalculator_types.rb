@@ -19,12 +19,16 @@
 # @!attribute [rw] height
 #   @return [Float]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] weight
 #   @return [Float]
 Bmi = Struct.new(
   :Category,
   :bmi,
   :height,
+  :id,
   :weight,
   keyword_init: true
 )

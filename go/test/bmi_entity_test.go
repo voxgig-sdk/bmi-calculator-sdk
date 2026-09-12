@@ -50,7 +50,7 @@ func TestBmiEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		bmiRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.bmi", setup.data)))
+		bmiRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.bmi")))
 		var bmiRef01Data map[string]any
 		if len(bmiRef01DataRaw) > 0 {
 			bmiRef01Data = core.ToMapAny(bmiRef01DataRaw[0][1])
@@ -61,13 +61,19 @@ func TestBmiEntity(t *testing.T) {
 
 		// LOAD
 		bmiRef01Ent := client.Bmi(nil)
-		bmiRef01MatchDt0 := map[string]any{}
+		bmiRef01MatchDt0 := map[string]any{
+			"id": bmiRef01Data["id"],
+		}
 		bmiRef01DataDt0Loaded, err := bmiRef01Ent.Load(bmiRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if bmiRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		bmiRef01DataDt0LoadResult := core.ToMapAny(entityData(bmiRef01DataDt0Loaded))
+		if bmiRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if bmiRef01DataDt0LoadResult["id"] != bmiRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})
@@ -97,7 +103,7 @@ func bmiBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"bmi01", "bmi02", "bmi03", "weight01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +131,22 @@ func bmiBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["BMI_CALCULATOR_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewBmiCalculatorSDK(core.ToMapAny(mergedOpts))
 	}

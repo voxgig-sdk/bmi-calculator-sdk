@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -73,24 +84,44 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "bmi",
           "req": true,
           "short": "Calculated BMI (trimmed to 3 decimal points)",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "height",
           "req": true,
           "short": "Provided height in meters",
           "type": "`$NUMBER`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
+          "format": "float",
           "name": "weight",
           "req": true,
           "short": "Provided weight in kilograms",
           "type": "`$NUMBER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "from": {
+          "height": "height",
+          "weight": "weight"
+        },
+        "name": "id",
+        "parts": [
+          "weight",
+          "height"
+        ],
+        "sep": "/"
+      },
       "name": "bmi",
       "op": {
         "load": {
@@ -121,11 +152,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/bmi/{weight}/{height}",
-              "parts": [
-                "api",
-                "bmi",
-                "{weight}",
-                "{height}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "bmi"
+                },
+                {
+                  "var": "weight"
+                },
+                {
+                  "var": "height"
+                }
               ],
               "select": {
                 "exist": [
@@ -136,7 +175,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "bmi",
+                "{weight}",
+                "{height}"
+              ]
             }
           ]
         }
@@ -156,6 +201,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

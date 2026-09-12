@@ -18,6 +18,7 @@ class Bmi
     public string $Category;
     public float $bmi;
     public float $height;
+    public ?string $id = null;
     public float $weight;
 }
 

@@ -240,6 +240,7 @@ returns a result `Hash` with these keys:
 | `Category` | Health category based on BMI |
 | `bmi` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | Provided height in meters |
+| `id` |  |
 | `weight` | Provided weight in kilograms |
 
 Operations: Load.
@@ -268,6 +269,7 @@ Create an instance: `bmi = client.Bmi`
 | `Category` | `String` | Health category based on BMI |
 | `bmi` | `Float` | Calculated BMI (trimmed to 3 decimal points) |
 | `height` | `Float` | Provided height in meters |
+| `id` | `String` |  |
 | `weight` | `Float` | Provided weight in kilograms |
 
 #### Example: Load

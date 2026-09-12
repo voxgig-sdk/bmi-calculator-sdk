@@ -16,11 +16,15 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Bmi(TypedDict):
+class BmiRequired(TypedDict):
     Category: str
     bmi: float
     height: float
     weight: float
+
+
+class Bmi(BmiRequired, total=False):
+    id: str
 
 
 class BmiLoadMatch(TypedDict):

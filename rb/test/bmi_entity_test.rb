@@ -41,9 +41,13 @@ class BmiEntityTest < Minitest::Test
 
     # LOAD
     bmi_ref01_ent = client.Bmi(nil)
-    bmi_ref01_match_dt0 = {}
+    bmi_ref01_match_dt0 = {
+      "id" => bmi_ref01_data["id"],
+    }
     bmi_ref01_data_dt0_loaded = bmi_ref01_ent.load(bmi_ref01_match_dt0, nil)
-    assert !bmi_ref01_data_dt0_loaded.nil?
+    bmi_ref01_data_dt0_load_result = Helpers.to_map(bmi_ref01_data_dt0_loaded.respond_to?(:data_get) ? bmi_ref01_data_dt0_loaded.data_get : bmi_ref01_data_dt0_loaded)
+    assert !bmi_ref01_data_dt0_load_result.nil?
+    assert_equal bmi_ref01_data_dt0_load_result["id"], bmi_ref01_data["id"]
 
   end
 end
@@ -91,6 +95,9 @@ def bmi_basic_setup(extra)
 
   if env["BMI_CALCULATOR_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
       },
       extra || {},

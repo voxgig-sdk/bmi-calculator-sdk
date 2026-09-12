@@ -42,23 +42,43 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "bmi",
 						"req": true,
 						"short": "Calculated BMI (trimmed to 3 decimal points)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "height",
 						"req": true,
 						"short": "Provided height in meters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"format": "float",
 						"name": "weight",
 						"req": true,
 						"short": "Provided weight in kilograms",
 						"type": "`$NUMBER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"from": map[string]any{
+						"height": "height",
+						"weight": "weight",
+					},
+					"name": "id",
+					"parts": []any{
+						"weight",
+						"height",
+					},
+					"sep": "/",
 				},
 				"name": "bmi",
 				"op": map[string]any{
@@ -90,11 +110,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/bmi/{weight}/{height}",
-								"parts": []any{
-									"api",
-									"bmi",
-									"{weight}",
-									"{height}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "bmi",
+									},
+									map[string]any{
+										"var": "weight",
+									},
+									map[string]any{
+										"var": "height",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -105,6 +133,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"bmi",
+									"{weight}",
+									"{height}",
 								},
 							},
 						},
@@ -120,6 +154,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (
