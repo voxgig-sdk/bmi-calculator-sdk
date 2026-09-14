@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
+import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator-sdk'
 
 const client = new BmiCalculatorSDK()
 ```
@@ -413,7 +413,7 @@ bmi-calculator/
 Import the SDK from the package root:
 
 ```ts
-import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
+import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator-sdk'
 ```
 
 ### Entity state

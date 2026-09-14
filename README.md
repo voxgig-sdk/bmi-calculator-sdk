@@ -105,7 +105,7 @@ local result, err = client:Bmi():load({ height = 1, weight = 1 })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
+| TypeScript | `@voxgig-sdk/bmi-calculator-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
 | Python | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
 | PHP | `voxgig-sdk/bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/bmi-calculator-sdk/go` | `go get github.com/voxgig-sdk/bmi-calculator-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Bmi():load({ height = 1, weight = 1 })
 ### TypeScript
 
 ```ts
-import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator'
+import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator-sdk'
 
 const client = new BmiCalculatorSDK()
 

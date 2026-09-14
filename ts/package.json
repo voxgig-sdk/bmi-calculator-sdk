@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/bmi-calculator",
+  "name": "@voxgig-sdk/bmi-calculator-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the BMI Calculator public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
