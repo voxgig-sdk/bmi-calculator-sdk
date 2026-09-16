@@ -4,7 +4,10 @@ declare(strict_types=1);
 // BmiCalculator SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class BmiCalculatorFeatures
@@ -14,8 +17,14 @@ class BmiCalculatorFeatures
         switch ($name) {
             case "base":
                 return new BmiCalculatorBaseFeature();
+            case "ratelimit":
+                return new BmiCalculatorRatelimitFeature();
+            case "retry":
+                return new BmiCalculatorRetryFeature();
             case "test":
                 return new BmiCalculatorTestFeature();
+            case "timeout":
+                return new BmiCalculatorTimeoutFeature();
             default:
                 return new BmiCalculatorBaseFeature();
         }
@@ -31,7 +40,10 @@ class BmiCalculatorFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

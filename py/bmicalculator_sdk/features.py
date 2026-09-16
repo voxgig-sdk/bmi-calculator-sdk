@@ -1,12 +1,18 @@
 # BmiCalculator SDK feature factory
 
 from bmicalculator_sdk.feature.base_feature import BmiCalculatorBaseFeature
+from bmicalculator_sdk.feature.ratelimit_feature import BmiCalculatorRatelimitFeature
+from bmicalculator_sdk.feature.retry_feature import BmiCalculatorRetryFeature
 from bmicalculator_sdk.feature.test_feature import BmiCalculatorTestFeature
+from bmicalculator_sdk.feature.timeout_feature import BmiCalculatorTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: BmiCalculatorBaseFeature(),
+    "ratelimit": lambda: BmiCalculatorRatelimitFeature(),
+    "retry": lambda: BmiCalculatorRetryFeature(),
     "test": lambda: BmiCalculatorTestFeature(),
+    "timeout": lambda: BmiCalculatorTimeoutFeature(),
 }
 
 

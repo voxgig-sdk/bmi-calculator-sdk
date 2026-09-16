@@ -33,5 +33,138 @@
         "weight": 204
       }
     }
+  },
+  "requests": {
+    "GET /api/bmi/{weight}/{height}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "calculateBMI",
+        "parameters": [
+          {
+            "description": "Body weight in kilograms",
+            "in": "path",
+            "name": "weight",
+            "required": true,
+            "schema": {
+              "example": 87.9,
+              "format": "float",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Height in meters",
+            "in": "path",
+            "name": "height",
+            "required": true,
+            "schema": {
+              "example": 1.75,
+              "exclusiveMinimum": 0,
+              "format": "float",
+              "type": "number"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "Category": "Overweight",
+                  "bmi": 28.702,
+                  "height": 1.75,
+                  "weight": 87.9
+                },
+                "schema": {
+                  "properties": {
+                    "Category": {
+                      "description": "Health category based on BMI",
+                      "enum": [
+                        "Underweight",
+                        "Normal weight",
+                        "Overweight",
+                        "Obese"
+                      ],
+                      "example": "Overweight",
+                      "type": "string"
+                    },
+                    "bmi": {
+                      "description": "Calculated BMI (trimmed to 3 decimal points)",
+                      "example": 28.702,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "height": {
+                      "description": "Provided height in meters",
+                      "example": 1.75,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "weight": {
+                      "description": "Provided weight in kilograms",
+                      "example": 87.9,
+                      "format": "float",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Category",
+                    "bmi",
+                    "height",
+                    "weight"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful BMI calculation"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "heightIsZero": {
+                    "summary": "Height is zero",
+                    "value": {
+                      "Error": "Height parameter cannot be Zero"
+                    }
+                  },
+                  "invalidParameters": {
+                    "summary": "Invalid parameters",
+                    "value": {
+                      "error": "Invalid parameters. Please provide numeric values for weight and height."
+                    }
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "Error": {
+                          "example": "Height parameter cannot be Zero",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "error": {
+                          "example": "Invalid parameters. Please provide numeric values for weight and height.",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Bad request - Invalid parameters or height is zero"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
