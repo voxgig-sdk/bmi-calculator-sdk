@@ -105,12 +105,12 @@ local result, err = client:Bmi():load({ height = 1, weight = 1 })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/bmi-calculator-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
-| Python | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
-| PHP | `voxgig-sdk/bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
+| TypeScript | `@voxgig-sdk/bmi-calculator-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/tags) |
+| Python | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/tags) |
+| PHP | `voxgig-sdk/bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/bmi-calculator-sdk/go` | `go get github.com/voxgig-sdk/bmi-calculator-sdk/go@latest` |
-| Ruby | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
-| Lua | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/releases) |
+| Ruby | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/tags) |
+| Lua | `voxgig-sdk-bmi-calculator` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bmi-calculator-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/bmi-calculator-sdk/go-cli` | `go install github.com/voxgig-sdk/bmi-calculator-sdk/go-cli/cmd/bmi-calculator@latest` |
 | Go MCP server | `github.com/voxgig-sdk/bmi-calculator-sdk/go-mcp` | `go get github.com/voxgig-sdk/bmi-calculator-sdk/go-mcp@latest` |
 
