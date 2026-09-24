@@ -1,0 +1,125 @@
+# Entity: bmi
+
+main: kit: entity: bmi: {
+
+  alias: field: {}
+
+  fields: {
+    Category: {
+      h: "Category"
+      n: "Category"
+      r: true
+      sh: "Health category based on BMI"
+      t: "`$STRING`"
+    }
+    bmi: {
+      fo: "float"
+      h: "Bmi"
+      n: "bmi"
+      r: true
+      sh: "Calculated BMI (trimmed to 3 decimal points)"
+      t: "`$NUMBER`"
+    }
+    height: {
+      fo: "float"
+      h: "Height"
+      n: "height"
+      r: true
+      sh: "Provided height in meters"
+      t: "`$NUMBER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    weight: {
+      fo: "float"
+      h: "Weight"
+      n: "weight"
+      r: true
+      sh: "Provided weight in kilograms"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    from: {
+      height: "height"
+      weight: "weight"
+    }
+    name: "id"
+    parts: [
+      "weight"
+      "height"
+    ]
+    sep: "/"
+  }
+
+  name: "bmi"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/bmi/{weight}/{height}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1.75
+                k: "param"
+                n: "height"
+                or: "height"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 87.9
+                k: "param"
+                n: "weight"
+                or: "weight"
+                r: true
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/bmi/{weight}/{height}"
+          q: {
+            exist: [
+              "height"
+              "weight"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "bmi"
+            }
+            {
+              var: "weight"
+            }
+            {
+              var: "height"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

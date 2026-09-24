@@ -38,7 +38,6 @@ client = BmiCalculatorSDK()
 
 ### 3. Load a bmi
 
-Bmi is nested under height, so provide the `height`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python

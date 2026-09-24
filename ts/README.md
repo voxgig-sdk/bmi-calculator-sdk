@@ -35,15 +35,11 @@ const client = new BmiCalculatorSDK()
 
 ### 3. Load a bmi
 
-Bmi is nested under height, so provide the `height`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const bmi = await client.Bmi().load({
-    height: 1,
-    weight: 1,
-  })
+  const bmi = await client.Bmi().load({ height: 1, weight: 1 })
   console.log(bmi)
 } catch (err) {
   console.error('load failed:', err)

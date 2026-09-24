@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -123,12 +123,8 @@ import { BmiCalculatorSDK } from '@voxgig-sdk/bmi-calculator-sdk'
 
 const client = new BmiCalculatorSDK()
 
-
-// Load a specific bmi (returns a Bmi)
-const bmi = await client.Bmi().load({
-  height: 1,
-  weight: 1,
-})
+// Load bmi data (returns a Bmi)
+const bmi = await client.Bmi().load()
 console.log(bmi)
 ```
 
@@ -211,11 +207,8 @@ import sdk "github.com/voxgig-sdk/bmi-calculator-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific bmi
-bmi, err := client.Bmi(nil).Load(
-    map[string]any{"height": 1, "weight": 1}, nil,
-)
+// Load bmi data
+bmi, err := client.Bmi(nil).Load(map[string]any{"height": 1, "weight": 1}, nil)
 if err != nil {
     panic(err)
 }

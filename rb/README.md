@@ -32,8 +32,6 @@ client = BmiCalculatorSDK.new
 
 ### 3. Load a bmi
 
-Bmi is nested under height, so provide the `height`.
-
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Bmi record (raises on error).

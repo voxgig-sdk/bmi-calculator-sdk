@@ -1,7 +1,7 @@
 // Typed models for the BmiCalculator SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // Bmi is the typed data model for the bmi entity.
 type Bmi struct {
-	Category string `json:"Category"`
-	Bmi float64 `json:"bmi"`
-	Height float64 `json:"height"`
-	Id *string `json:"id,omitempty"`
-	Weight float64 `json:"weight"`
 }
 
 // BmiLoadMatch is the typed request payload for Bmi.LoadTyped.

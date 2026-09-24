@@ -113,34 +113,39 @@ class BmiCalculatorConfig
           'fields' => [
             [
               'name' => 'Category',
+              'title' => 'Category',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Health category based on BMI',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'float',
               'name' => 'bmi',
+              'title' => 'Bmi',
+              'type' => '`$NUMBER`',
               'req' => true,
               'short' => 'Calculated BMI (trimmed to 3 decimal points)',
-              'type' => '`$NUMBER`',
+              'format' => 'float',
             ],
             [
-              'format' => 'float',
               'name' => 'height',
+              'title' => 'Height',
+              'type' => '`$NUMBER`',
               'req' => true,
               'short' => 'Provided height in meters',
-              'type' => '`$NUMBER`',
+              'format' => 'float',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
-              'format' => 'float',
               'name' => 'weight',
+              'title' => 'Weight',
+              'type' => '`$NUMBER`',
               'req' => true,
               'short' => 'Provided weight in kilograms',
-              'type' => '`$NUMBER`',
+              'format' => 'float',
             ],
           ],
           'id' => [
@@ -163,26 +168,6 @@ class BmiCalculatorConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 1.75,
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$NUMBER`',
-                      ],
-                      [
-                        'example' => 87.9,
-                        'kind' => 'param',
-                        'name' => 'weight',
-                        'orig' => 'weight',
-                        'reqd' => true,
-                        'type' => '`$NUMBER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/bmi/{weight}/{height}',
@@ -200,32 +185,49 @@ class BmiCalculatorConfig
                       'var' => 'height',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'height',
-                      'weight',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'bmi',
                     '{weight}',
                     '{height}',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$NUMBER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 1.75,
+                      ],
+                      [
+                        'name' => 'weight',
+                        'orig' => 'weight',
+                        'type' => '`$NUMBER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 87.9,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'height',
+                      'weight',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'bmi',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
       ],

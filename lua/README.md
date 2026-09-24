@@ -35,8 +35,6 @@ local client = sdk.new()
 
 ### 3. Load a bmi
 
-Bmi is nested under height, so provide the `height`.
-
 ```lua
 local bmi, err = client:Bmi():load({ height = 1, weight = 1 })
 if err then error(err) end

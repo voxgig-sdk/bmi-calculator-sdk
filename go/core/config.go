@@ -91,34 +91,39 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Category",
+						"title": "Category",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Health category based on BMI",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "bmi",
+						"title": "Bmi",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Calculated BMI (trimmed to 3 decimal points)",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "height",
+						"title": "Height",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Provided height in meters",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "weight",
+						"title": "Weight",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Provided weight in kilograms",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 				},
 				"id": map[string]any{
@@ -141,26 +146,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 1.75,
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": 87.9,
-											"kind": "param",
-											"name": "weight",
-											"orig": "weight",
-											"reqd": true,
-											"type": "`$NUMBER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/bmi/{weight}/{height}",
@@ -178,32 +163,49 @@ func MakeConfig() map[string]any {
 										"var": "height",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"height",
-										"weight",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"bmi",
 									"{weight}",
 									"{height}",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$NUMBER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 1.75,
+										},
+										map[string]any{
+											"name": "weight",
+											"orig": "weight",
+											"type": "`$NUMBER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 87.9,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"height",
+										"weight",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"bmi",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 		},
