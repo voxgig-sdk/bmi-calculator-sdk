@@ -241,6 +241,7 @@
             },
             "strict": false
           },
+          "description": "Client-side rate limiting via a token bucket",
           "hook": {
             "GetData": {
               "active": false,
@@ -319,7 +320,7 @@
               "deps": {}
             }
           },
-          "title": "Client-side rate limiting via a token bucket",
+          "title": "Rate limiting",
           "transport": "wrap",
           "version": "0.0.1"
         },
@@ -349,6 +350,7 @@
             },
             "strict": false
           },
+          "description": "Automatic retry of transient failures with exponential backoff",
           "hook": {
             "GetData": {
               "active": false,
@@ -427,7 +429,7 @@
               "deps": {}
             }
           },
-          "title": "Automatic retry of transient failures with exponential backoff",
+          "title": "Retry",
           "transport": "wrap",
           "version": "0.0.1"
         },
@@ -444,6 +446,7 @@
             },
             "strict": false
           },
+          "description": "In-memory mock transport for testing without a live server",
           "hook": {
             "GetData": {
               "active": true,
@@ -530,7 +533,7 @@
               "deps": {}
             }
           },
-          "title": "In-memory mock transport for testing without a live server",
+          "title": "Test transport",
           "transport": "base",
           "version": "0.0.1"
         },
@@ -548,6 +551,7 @@
             },
             "strict": false
           },
+          "description": "Per-request timeout with transport abort",
           "hook": {
             "GetData": {
               "active": false,
@@ -626,7 +630,7 @@
               "deps": {}
             }
           },
-          "title": "Per-request timeout with transport abort",
+          "title": "Timeout",
           "transport": "wrap",
           "version": "0.0.1"
         }
@@ -729,6 +733,14 @@
         },
         "utility": {}
       },
+      "phase": {
+        "build": {
+          "active": true
+        },
+        "top": {
+          "active": true
+        }
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -765,6 +777,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -832,6 +845,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -909,6 +923,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -992,6 +1007,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -1058,6 +1074,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -1130,6 +1147,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -1181,12 +1199,7 @@
             "json": {
               "active": true,
               "kind": "prod",
-              "version": "0"
-            },
-            "voxgig-struct": {
-              "active": true,
-              "kind": "prod",
-              "version": "0.0.10"
+              "version": "*"
             }
           },
           "ext": "rb",
@@ -1207,6 +1220,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
@@ -1284,6 +1298,7 @@
             "create": true,
             "path": "",
             "repo": "",
+            "root": false,
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
